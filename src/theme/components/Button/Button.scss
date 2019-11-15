@@ -1,0 +1,90 @@
+.button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition-speed);
+  color: var(--c-p);
+
+  &--large {
+    font-size: var(--fs-h2);
+  }
+
+  &--nobutton {
+    text-decoration: underline;
+    text-decoration-color: var(--c-yellow);
+    text-underline-offset: 0.4em;
+  }
+
+  &--primary,
+  &--secondary,
+  &--alt {
+    padding: 0.5em 1.5em;
+  }
+
+  &--primary {
+    background: var(--c-yellow);
+
+    &:hover {
+      background: var(--c-yellow-hover);
+    }
+  }
+
+  &--secondary {
+    background: var(--c-gray);
+
+    &:hover {
+      background: var(--c-gray-hover);
+    }
+  }
+
+  &--alt {
+    background: var(--c-black);
+
+    &:hover {
+      background: var(--c-black-hover);
+    }
+  }
+
+  &__icon {
+    margin-right: 0.5em;
+    margin-left: -0.3em;
+  }
+
+  &--loading,
+  &:disabled {
+    cursor: default;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  &--loading {
+    position: relative;
+    color: transparent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1em;
+      height: 1em;
+      margin-left: -0.5em;
+      margin-top: -0.5em;
+      display: block;
+      border: 0.1em solid var(--c-p);
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      animation: spinner 700ms infinite linear;
+    }
+  }
+
+  &--secondary.button--loading::after {
+    border-color: #fff;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+}
