@@ -1,0 +1,5 @@
+.partner {
+  display: grid;
+  grid-gap: var(--space-gutter) var(--space-gutter);
+  grid-template-columns: 1fr 1fr;
+}

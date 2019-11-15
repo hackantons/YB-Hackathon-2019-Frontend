@@ -1,10 +1,12 @@
 .page {
-  max-width: 900px;
-  width: calc(100% - var(--space-gutter) * 2);
-  margin: calc(var(--space-gutter) * 2) auto;
+  &__content {
+    max-width: 900px;
+    width: calc(100% - var(--space-gutter) * 2);
+    margin: calc(var(--space-gutter) * 2) auto;
 
-  & > * + * {
-    margin-top: var(--space-section);
+    & > * + * {
+      margin-top: var(--space-section);
+    }
   }
 
   &__header {

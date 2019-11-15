@@ -15,6 +15,7 @@
     "lint": "npm run eslint && npm run stylelint"
   },
   "dependencies": {
+    "aws-amplify": "^1.2.4",
     "classnames": "^2.2.6",
     "idb": "^4.0.5",
     "react": "^16.11.0",

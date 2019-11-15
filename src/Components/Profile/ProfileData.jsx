@@ -24,7 +24,7 @@ export default ({ className }: { className: string } = '') => {
   const [error: string, setError] = React.useState('');
 
   React.useEffect(() => {
-    idb.get('userKey').then(resp => {
+    idb.get('userId').then(resp => {
       setFormData({
         user: resp,
       });
