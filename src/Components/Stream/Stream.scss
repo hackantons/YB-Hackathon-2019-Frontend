@@ -1,14 +1,13 @@
 :root {
-  --chat-indent: 2.5rem;
+  --stream-indent: 4rem;
 }
 
-.chat {
+.stream {
   &__message-stream {
     overflow-y: scroll;
-    height: 100vh;
+    height: 80vh;
     position: relative;
     scroll-behavior: smooth;
-    padding-left: var(--chat-indent);
 
     & > * + * {
       margin-top: var(--space-gutter);
@@ -16,14 +15,6 @@
 
     & > * + h2 {
       margin-top: var(--space-groups);
-    }
-
-    &:before {
-      content: '';
-      height: calc(100% - 2rem);
-      width: 0.2rem;
-      background-color: var(--c-bkg-light);
-      position: absolute;
     }
 
     &-matchtime {
@@ -39,11 +30,29 @@
         width: 0.2rem;
         height: 0.2rem;
         background-color: var(--c-bkg-light);
-        left: var(--chat-indent);
+        left: calc(var(--stream-indent) - 1rem);
         top: 50%;
         transform: translateY(-50%);
         position: absolute;
       }
+    }
+  }
+
+  &__message-wrapper {
+    position: relative;
+    height: auto;
+    padding-bottom: 3rem;
+    padding-top: var(--space-inside);
+
+    &:before {
+      content: '';
+      top: 0;
+      height: calc(100% - 2rem);
+      width: 0.2rem;
+      background-color: var(--c-bkg-light);
+      position: absolute;
+      z-index: 10;
+      left: calc(var(--stream-indent) - 1rem);
     }
   }
 

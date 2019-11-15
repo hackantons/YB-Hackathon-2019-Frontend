@@ -2,18 +2,15 @@
 import React from 'react';
 import cn from 'classnames';
 
-import { Auth } from 'aws-amplify';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './Page.scss';
 
 import Onboarding from './Components/Auth/Onboarding.jsx';
 import Content from './Components/Page/Content.jsx';
 import Profile from './Components/Profile/index.jsx';
-import DataViz from './Components/Page/DataViz.jsx';
-import { connect } from 'react-redux';
-import { updateUserId, updateUserGroup } from '@redux/actions';
 
-import { Loader } from '@theme';
+import { connect } from 'react-redux';
+import Statistics from './Components/Page/Statistics.jsx';
 
 const App = ({ user }) => {
   return (
@@ -28,14 +25,14 @@ const App = ({ user }) => {
       ) : (
         <Router>
           <nav className="page__navigation">
-            <Link to="/" className="page__navigation-element">
-              Home
-            </Link>
             <Link to="/profile" className="page__navigation-element">
               Profil
             </Link>
-            <Link to="/live" className="page__navigation-element">
+            <Link to="/" className="page__navigation-element">
               Live
+            </Link>
+            <Link to="/statistics" className="page__navigation-element">
+              Statistiken
             </Link>
           </nav>
           <div className="page__content">
@@ -43,8 +40,8 @@ const App = ({ user }) => {
               <Route path="/profile">
                 <Profile user={user} />
               </Route>
-              <Route path="/live">
-                <DataViz />
+              <Route path="/statistics">
+                <Statistics />
               </Route>
               <Route path="/">
                 <Content />

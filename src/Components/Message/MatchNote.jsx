@@ -22,13 +22,8 @@ export default (props: Props) => {
         )}
       </div>
       <div className="message__content">
+        <h5>{props.data.label}</h5>
         <p>{props.data.text}</p>
-      </div>
-      <div className="message__footer">
-        <span className="message__sender">{props.data.user}</span>
-        {props.data.sector && (
-          <span className="message__sector">{props.data.sector}</span>
-        )}
       </div>
     </div>
   );
