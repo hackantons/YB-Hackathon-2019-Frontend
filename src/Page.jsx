@@ -10,6 +10,7 @@ import Onboarding from './Components/Auth/Onboarding.jsx';
 import Content from './Components/Page/Content.jsx';
 import Profile from './Components/Profile/index.jsx';
 import DataViz from './Components/Page/DataViz.jsx';
+import Section from './Components/Page/Section.jsx';
 import { Loader } from '@theme';
 
 import { idb, uuidv4 } from './store/idb';
@@ -34,6 +35,9 @@ export default () => {
             <Link to="/profile" className="page__navigation-element">
               Profil
             </Link>
+            <Link to="/section" className="page__navigation-element">
+              Sections
+            </Link>
             <Link to="/live" className="page__navigation-element">
               Live
             </Link>
@@ -45,6 +49,9 @@ export default () => {
               </Route>
               <Route path="/live">
                 <DataViz />
+              </Route>
+              <Route path="/section">
+                <Section />
               </Route>
               <Route path="/">
                 <Content />

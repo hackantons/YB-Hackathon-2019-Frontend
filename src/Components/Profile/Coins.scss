@@ -1,0 +1,67 @@
+.coins {
+  &__heading {
+    &--small {
+      font-size: var(--fs-h6);
+      font-weight: 400;
+      display: inline-block;
+      vertical-align: top;
+      line-height: 1;
+    }
+
+    margin-bottom: var(--space-groups);
+  }
+
+  &__offer {
+    margin: var(--space-gutter) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  &__offer-content {
+    flex: 0 0 calc(100% - 100px - var(--space-gutter));
+    max-width: calc(100% - 100px - var(--space-gutter));
+    padding-right: 3rem;
+
+    > * {
+      margin-top: var(--space-gutter-half);
+      margin-bottom: var(--space-gutter-half);
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-75%);
+      font-size: 2rem;
+    }
+
+    .offer__costs {
+      font-weight: 400;
+    }
+  }
+
+  &__offer-img {
+    flex: 0 0 100px;
+    max-width: 100px;
+    align-self: flex-start;
+    border-radius: 0.3rem;
+    border: 2px solid #eaa716;
+  }
+
+  &__referrer {
+    color: var(--c-p-white);
+    display: block;
+    text-align: center;
+    margin-top: var(--space-groups);
+  }
+}
