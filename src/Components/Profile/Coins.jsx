@@ -25,7 +25,7 @@ export default ({ className }: { className: string } = '') => {
         <div className="coins__offer-content">
           <h5>Fan Shop Upgrade</h5>
           <p>Hol dir dein signiertes Trikot im Fan Shop.</p>
-          <span class="offer__costs">noch 2 YB Coins</span>
+          <span className="offer__costs">noch 2 YB Coins</span>
           <Icon icon="mdi/arrow-right" />
         </div>
       </div>
@@ -38,7 +38,7 @@ export default ({ className }: { className: string } = '') => {
         <div className="coins__offer-content">
           <h5>Grüsse deine Freunde</h5>
           <p>Sende einen Gruss von der Videoleinwand.</p>
-          <span class="offer__costs">200 YB Coins</span>
+          <span className="offer__costs">200 YB Coins</span>
           <Icon icon="mdi/arrow-right" />
         </div>
       </div>

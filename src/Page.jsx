@@ -10,7 +10,7 @@ import Onboarding from './Components/Auth/Onboarding.jsx';
 import Content from './Components/Page/Content.jsx';
 import Profile from './Components/Profile/index.jsx';
 import DataViz from './Components/Page/DataViz.jsx';
-import Section from './Components/Page/Section.jsx';
+import Statistics from './Components/Page/Statistics.jsx';
 import { Loader } from '@theme';
 
 import { idb, uuidv4 } from './store/idb';
@@ -29,17 +29,14 @@ export default () => {
       {user !== '' && (
         <Router>
           <nav className="page__navigation">
-            <Link to="/" className="page__navigation-element">
-              Home
-            </Link>
             <Link to="/profile" className="page__navigation-element">
               Profil
             </Link>
-            <Link to="/section" className="page__navigation-element">
-              Sections
-            </Link>
-            <Link to="/live" className="page__navigation-element">
+            <Link to="/" className="page__navigation-element">
               Live
+            </Link>
+            <Link to="/statistics" className="page__navigation-element">
+              Statistiken
             </Link>
           </nav>
           <div className="page__content">
@@ -47,11 +44,8 @@ export default () => {
               <Route path="/profile">
                 <Profile />
               </Route>
-              <Route path="/live">
-                <DataViz />
-              </Route>
-              <Route path="/section">
-                <Section />
+              <Route path="/statistics">
+                <Statistics />
               </Route>
               <Route path="/">
                 <Content />
