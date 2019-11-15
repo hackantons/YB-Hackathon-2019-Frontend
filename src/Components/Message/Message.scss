@@ -1,0 +1,66 @@
+.message {
+	background-color: var(--c-p-white);
+	position: relative;
+	color: var(--c-black);
+	padding: 1rem;
+
+	&__title {
+		font-size: var(--fs-h4);
+		text-transform: none;
+	}
+
+	&__content {
+		p {
+			color: var(--c-black);
+		}
+	}
+
+
+&__footer {
+	font-size: var(--fs-small);
+}
+	&:before {
+		content: '';
+		z-index: -1;
+		width: .8rem;
+		height: .8rem;
+		background-color: var(--c-p-white);
+		position: absolute;
+		top: 1.5rem;
+		transform: translateY(-50%) rotate(45deg);
+	}
+
+	&__sender {
+		width: 2rem;
+		height: 2rem;
+		background-color: red;
+		position: absolute;
+		top: 1.5rem;
+		border-radius: 100%;
+		transform: translateY(-50%);
+	}
+
+	&--recieved {
+		margin-left: 4rem;
+
+		&:before {
+			left: calc(-1 * .4rem);
+		}
+
+		.message__sender {
+			left: -4rem;
+		}
+	}
+
+	&--sent {
+		margin-right: 4rem;
+
+		&:before {
+			right: calc(-1 * .4rem);
+		}
+
+		.message__sender {
+			right: -4rem;
+		}
+	}
+}
