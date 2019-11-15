@@ -10,13 +10,12 @@ import Onboarding from './Components/Auth/Onboarding.jsx';
 import Content from './Components/Page/Content.jsx';
 import Profile from './Components/Profile/index.jsx';
 import DataViz from './Components/Page/DataViz.jsx';
+import { connect } from 'react-redux';
+import { updateUserId, updateUserGroup } from '@redux/actions';
+
 import { Loader } from '@theme';
 
-import { idb, uuidv4 } from './store/idb';
-
-export default () => {
-  const [user, setUser] = React.useState('test');
-
+const App = ({ user }) => {
   return (
     <div className="page">
       <header className="page__header">
@@ -24,8 +23,9 @@ export default () => {
           <img src="static/img/bscyb-logo.png" alt="BSCYB Logo" />
         </div>
       </header>
-      {user === '' && <Onboarding />}
-      {user !== '' && (
+      {user.group === '' || user.id === '' ? (
+        <Onboarding className="page__main" />
+      ) : (
         <Router>
           <nav className="page__navigation">
             <Link to="/" className="page__navigation-element">
@@ -41,7 +41,7 @@ export default () => {
           <div className="page__content">
             <Switch>
               <Route path="/profile">
-                <Profile />
+                <Profile user={user} />
               </Route>
               <Route path="/live">
                 <DataViz />
@@ -56,3 +56,8 @@ export default () => {
     </div>
   );
 };
+
+const mapStateToProps = state => {
+  return state;
+};
+export default connect(mapStateToProps)(App);

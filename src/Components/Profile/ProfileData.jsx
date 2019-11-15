@@ -2,6 +2,7 @@
 
 import React from 'react';
 import cn from 'classnames';
+import type { User } from '@vendor/types';
 
 import {
   Button,
@@ -18,22 +19,11 @@ import {
 } from '@theme';
 import { idb, uuidv4 } from '@/store/idb';
 
-export default ({ className }: { className: string } = '') => {
-  const [formData: {}, setFormData] = React.useState({});
+export default (
+  { className, user }: { className: string, user: User } = ''
+) => {
   const [formProcessing: boolean, setFormProcessing] = React.useState(false);
   const [error: string, setError] = React.useState('');
-
-  React.useEffect(() => {
-    idb.get('userId').then(resp => {
-      setFormData({
-        user: resp,
-      });
-    });
-  });
-
-  if (Object.keys(formData) === 0) {
-    return <Loader />;
-  }
 
   return (
     <Form
@@ -57,14 +47,14 @@ export default ({ className }: { className: string } = '') => {
           name="user"
           label="User"
           register={{ required: 'This field is required' }}
-          value={formData.user}
+          defaultValue={user.user}
           disabled
         />
         <InputText
           name="name"
           label="Name"
           register={{ required: 'This field is required' }}
-          value={formData.name}
+          defaultValue={user.name}
         />
       </FormFieldset>
       <FormControls>

@@ -189,6 +189,7 @@ module.exports = (env, argv) => {
         '@': dirSrc,
         '@theme': `${dirSrc}/theme/`,
         '@vendor': `${dirSrc}/vendor/`,
+        '@redux': `${dirSrc}/store/redux/`,
       },
     },
   };

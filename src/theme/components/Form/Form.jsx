@@ -10,15 +10,16 @@ type Props = {
   onSubmit: Function,
   className?: string,
   childen?: Node,
+  oneliner?: boolean,
 };
 
-const Form = ({ onSubmit, className, children, ...rest }: Props) => {
+const Form = ({ onSubmit, className, children, oneliner, ...rest }: Props) => {
   const methods = useForm();
   return (
     <FormContext {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className={cn(className, 'form')}
+        className={cn(className, 'form', oneliner ? 'form--oneliner' : '')}
         {...rest}
       >
         {children}

@@ -4,19 +4,27 @@ import React from 'react';
 import cn from 'classnames';
 import { idb, uuidv4 } from '@/store/idb';
 import { Auth } from 'aws-amplify';
-import {
-  Form,
-  FormFieldset,
-  InputText,
-  InputTextarea,
-  Loader,
-} from '@theme/index';
+import { endpointGroups } from '@/store/amplify';
+import { Button, Form, FormError, InputText, Loader } from '@theme/index';
 import axios from 'axios';
 
-export default ({ className }: { className: string } = '') => {
-  const [user, setUser] = React.useState('');
+import './Onboarding.scss';
+import { connect } from 'react-redux';
+import { updateUserGroup, updateUserId } from '@redux/actions';
+
+const Onboarding = ({ className, user, updateUserGroup, updateUserId }) => {
+  const [formProcessing: boolean, setFormProcessing] = React.useState(false);
+  const [newGroup: string, setNewGroup] = React.useState('');
+  const [error: string, setError] = React.useState('');
 
   const setUserfromDB = async () => {
+    if (user.id !== '' && newGroup !== '' && newGroup !== 'new') {
+      updateUserGroup(newGroup);
+    }
+
+    if (user.id !== '') {
+      return;
+    }
     let dbUser = await idb.get('userId');
     if (!dbUser) {
       dbUser = uuidv4() + '@bscyb.dev';
@@ -29,69 +37,150 @@ export default ({ className }: { className: string } = '') => {
       });
     } catch (error) {}
 
-    const signIn = await Auth.signIn(dbUser, 'yb1898');
-    const auth = await Auth.currentSession();
-    const accessToken = auth.getAccessToken();
+    await Auth.signIn(dbUser, 'yb1898');
+    const auth = await Auth.currentAuthenticatedUser();
+    const JWT = auth.signInUserSession.idToken.jwtToken;
+
+    console.log('user token', JWT);
+
     axios.defaults.headers.common = {
-      Authorization: accessToken.getJwtToken(),
+      Authorization: JWT,
     };
 
     const dbSet = await idb.set('userId', dbUser);
-    setUser(dbUser);
-
-    console.log('DO TEST');
-
-    axios
-      .get(
-        'https://tg9tjq6kak.execute-api.eu-central-1.amazonaws.com/prod/profile'
-      )
-      .then(resp => {
-        console.log(resp);
-      });
-    /*
-    idb.get('user').then(resp => {
-      if (resp) {
-        setUser(resp);
-      } else {
-        const id = uuidv4();
-        idb.set('userKey', id);
-        setUser(id);
-      }
-    });
-     */
+    updateUserId(dbUser);
   };
 
   React.useEffect(() => {
     setUserfromDB();
   });
 
-  return (
-    <div className={cn(className, 'onboarding')}>
-      <h1>Sälü</h1>
-      <p>TRIFF DICH MIT FREUNDEN</p>
+  if (user.id === '') {
+    return (
+      <div className={cn(className, 'coins')}>
+        <div className="page-loading">
+          <Loader className="page-loading__loader" />
+        </div>
+      </div>
+    );
+  }
+
+  /**
+   * Onboarding
+   */
+  let form = (
+    <React.Fragment>
+      <h1 className="onboarding__title">Sälü!</h1>
+      <p className="onboarding__text">TRIFF DICH MIT FREUNDEN</p>
       <Form
+        id="groupFindForm"
         onSubmit={data => {
-          console.log(data);
+          setFormProcessing(true);
+          axios
+            .get(endpointGroups + data.group + '/')
+            .then(resp => {
+              console.log(resp);
+              setNewGroup(data.group);
+              setFormProcessing(false);
+            })
+            .catch(() => {
+              setFormProcessing(false);
+              alert('gruppe konnte nicht gefunden');
+            });
         }}
-        className={cn(className)}
+        className="onboarding__form"
+        oneliner
       >
-        <FormFieldset legend="Personal Data">
-          <InputText
-            name="name"
-            label="Name"
-            placeholder="Muster"
-            register={{ required: 'This field is required' }}
-          />
-        </FormFieldset>
+        <InputText
+          name="group"
+          label="Gruppe"
+          placeholder="Gruppe"
+          register={{ required: 'This field is required' }}
+          value=""
+          large
+        />
+        <Button
+          text=""
+          type="submit"
+          loading={formProcessing}
+          style="primary"
+          icon="mdi/send"
+        />
+        {error !== '' && <FormError>{error}</FormError>}
       </Form>
-    </div>
+      <Button
+        text="Erstelle eine neue Gruppe"
+        style="secondary"
+        className="onboarding__new-group"
+        onClick={() => setNewGroup('new')}
+      />
+    </React.Fragment>
   );
 
-  return (
-    <div className={cn(className, 'coins')}>
-      <div className="page-loading">
-        <Loader className="page-loading__loader" />
-      </div>
-    </div>
-  );
+  /**
+   * Create Group
+   */
+  if (newGroup === 'new') {
+    form = (
+      <React.Fragment>
+        <h2 className="onboarding__title">Gib eurer Gruppe</h2>
+        <h1 className="onboarding__text">Einen Namen</h1>
+        <Form
+          id="groupCreateForm"
+          onSubmit={formData => {
+            setFormProcessing(true);
+            axios
+              .post(endpointGroups, {
+                name: formData.group,
+              })
+              .then(resp => {
+                console.log(resp);
+                setNewGroup(formData.group);
+                setFormProcessing(false);
+              })
+              .catch(() => {
+                setFormProcessing(false);
+                alert(
+                  'gruppe konnte nicht erstellt werden. Versuche einen anderen Namen'
+                );
+              });
+          }}
+          className="onboarding__form"
+          oneliner
+        >
+          <InputText
+            name="group"
+            label="Gruppe"
+            placeholder="Irgendwas mässig witziges"
+            register={{ required: 'This field is required' }}
+            value=""
+            large
+          />
+          <Button
+            text=""
+            type="submit"
+            loading={formProcessing}
+            style="primary"
+            icon="mdi/send"
+          />
+          {error !== '' && <FormError>{error}</FormError>}
+        </Form>
+        <Button
+          text="zurück"
+          onClick={() => setNewGroup('')}
+          style={'nobutton'}
+        />
+      </React.Fragment>
+    );
+  }
+
+  return <div className={cn(className, 'onboarding')}>{form}</div>;
 };
+
+const mapStateToProps = state => {
+  return state;
+};
+export default connect(
+  mapStateToProps,
+  { updateUserGroup, updateUserId }
+)(Onboarding);

@@ -7,3 +7,9 @@ export const awsConfig = {
   aws_user_pools_web_client_id: '1lghd6k6r9879ua7csj07p6hu2',
   oauth: {},
 };
+
+export const endpointProfile =
+  'https://tg9tjq6kak.execute-api.eu-central-1.amazonaws.com/prod/profile/';
+
+export const endpointGroups =
+  'https://ug4r12he1a.execute-api.eu-central-1.amazonaws.com/prod/group/';

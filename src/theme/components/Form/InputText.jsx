@@ -18,7 +18,7 @@ type Props = {
   classNameInput?: string,
 };
 
-const Textarea = (props: Props) => {
+const Text = (props: Props) => {
   const [id] = React.useState(() => uniqueId(props.name));
   const [name] = React.useState(() => uniqueId(props.name, 'form'));
   return (
@@ -39,8 +39,8 @@ const Textarea = (props: Props) => {
           </label>
           <input
             className={cn(
-              'form__textarea',
-              errors[name] ? 'form__textarea--error' : '',
+              'form__input',
+              errors[name] ? 'form__input--error' : '',
               props.classNameInput
             )}
             name={name}
@@ -59,7 +59,7 @@ const Textarea = (props: Props) => {
   );
 };
 
-Textarea.defaultProps = {
+Text.defaultProps = {
   register: {},
   type: 'text',
   large: false,
@@ -70,4 +70,4 @@ Textarea.defaultProps = {
   classNameInput: '',
 };
 
-export default Textarea;
+export default Text;

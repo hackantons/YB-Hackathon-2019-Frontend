@@ -2,10 +2,11 @@
   overflow: hidden;
   min-height: 90vh;
 
-  &__content {
+  &__content,
+  &__main {
     max-width: 900px;
     width: calc(100% - var(--space-gutter) * 2);
-    margin: 0 auto;
+    margin: calc(var(--space-section) * 2) auto 0 auto;
 
     & > * + * {
       margin-top: var(--space-section);

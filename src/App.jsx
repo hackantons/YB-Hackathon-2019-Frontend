@@ -10,6 +10,14 @@ import Page from './Page.jsx';
 
 const $container: HTMLElement | null = document.querySelector('#app');
 
+import { Provider } from 'react-redux';
+import store from '@redux/store';
+
 if ($container) {
-  ReactDOM.render(<Page />, $container);
+  ReactDOM.render(
+    <Provider store={store}>
+      <Page />
+    </Provider>,
+    $container
+  );
 }

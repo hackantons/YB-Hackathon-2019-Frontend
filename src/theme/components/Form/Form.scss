@@ -154,4 +154,20 @@
     color: var(--c-red);
     margin-right: auto;
   }
+
+  &--oneliner {
+    display: flex;
+
+    .form__element {
+      flex-grow: 1;
+    }
+
+    .form__label {
+      display: none;
+    }
+
+    .button {
+      margin-left: 0.5rem;
+    }
+  }
 }
