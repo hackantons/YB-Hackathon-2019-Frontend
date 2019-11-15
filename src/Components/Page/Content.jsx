@@ -3,6 +3,7 @@ import React from 'react';
 import cn from 'classnames';
 
 import { Button, ButtonGroup, Icon } from '@theme';
+import Chat from '../Chat/Chat.jsx';
 
 import './Content.scss';
 
@@ -74,6 +75,8 @@ export default (props: Props) => {
             onClick={click}
           />
         </ButtonGroup>
+
+				<Chat />
       </div>
     </div>
   );
