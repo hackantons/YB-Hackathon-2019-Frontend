@@ -1,0 +1,9 @@
+.content {
+  & > * + * {
+    margin-top: var(--space-gutter);
+  }
+
+  & > * + h2 {
+    margin-top: var(--space-groups);
+  }
+}
