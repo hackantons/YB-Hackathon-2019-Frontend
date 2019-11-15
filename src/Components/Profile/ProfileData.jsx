@@ -3,6 +3,7 @@
 import React from 'react';
 import cn from 'classnames';
 import type { User } from '@vendor/types';
+import { connect } from 'react-redux';
 
 import {
   Button,
@@ -18,10 +19,9 @@ import {
   Loader,
 } from '@theme';
 import { idb, uuidv4 } from '@/store/idb';
+import { updateUserGroup, updateUserId } from '@redux/actions';
 
-export default (
-  { className, user }: { className: string, user: User } = ''
-) => {
+export const ProfileData = ({ className, user }) => {
   const [formProcessing: boolean, setFormProcessing] = React.useState(false);
   const [error: string, setError] = React.useState('');
 
@@ -47,7 +47,7 @@ export default (
           name="user"
           label="User"
           register={{ required: 'This field is required' }}
-          defaultValue={user.user}
+          defaultValue={user.id}
           disabled
         />
         <InputText
@@ -69,3 +69,8 @@ export default (
     </Form>
   );
 };
+
+const mapStateToProps = state => {
+  return state;
+};
+export default connect(mapStateToProps)(ProfileData);
