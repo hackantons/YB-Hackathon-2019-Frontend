@@ -1,0 +1,13 @@
+:root {
+  --spacing: 1rem;
+  --spacing-small: 0.5rem;
+  --spacing-big: 2rem;
+  --transition-speed: 200ms;
+}
+
+@import 'tools/keyframes.spinner';
+@import '_reset';
+@import '_color';
+@import '_typography';
+@import '_grid';
+@import '_document';
