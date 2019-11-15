@@ -14,16 +14,15 @@ export default (props: Props) => {
   return (
 		<div className={'message message--' + props.type + ' message--' + props.data.origin}>
 			<div className="message__header">
-				<div className="message__sender"></div>
-				<h2 className="message__title">Message Type: {props.type}</h2>
+				<span className="message__time">{props.data.time}</span>
 			</div>
 			<div className="message__content">
-				<p>Aenean lacinia bibendum nulla sed consectetur.</p>
+				<p>{props.data.text}</p>
 				{props.type == 'poll' && <Poll />}
 			</div>
 			<div className="message__footer">
-				<span className="message__meta-timestamp">
-				{props.data.timestamp}</span>
+				<span className="message__sender">{props.data.user}</span>
+				{props.data.sector && <span className="message__sector">{props.data.sector}</span>}
 			</div>
     </div>
   );
