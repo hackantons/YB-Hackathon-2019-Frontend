@@ -20,7 +20,7 @@ export default () => {
   return (
     <div className="page">
       <header className="page__header">
-        <div className="page__content">
+        <div className="page__header-logo">
           <img src="static/img/bscyb-logo.png" alt="BSCYB Logo" />
         </div>
       </header>

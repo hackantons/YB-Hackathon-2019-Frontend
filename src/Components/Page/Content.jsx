@@ -76,7 +76,7 @@ export default (props: Props) => {
           />
         </ButtonGroup>
 
-				<Chat />
+        <Chat />
       </div>
     </div>
   );

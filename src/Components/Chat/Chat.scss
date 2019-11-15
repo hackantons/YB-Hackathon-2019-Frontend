@@ -1,11 +1,11 @@
 .chat {
   &__message-stream {
-		& > * + * {
-	    margin-top: var(--space-gutter);
-	  }
+    & > * + * {
+      margin-top: var(--space-gutter);
+    }
 
-	  & > * + h2 {
-	    margin-top: var(--space-groups);
-	  }
-	}
+    & > * + h2 {
+      margin-top: var(--space-groups);
+    }
+  }
 }

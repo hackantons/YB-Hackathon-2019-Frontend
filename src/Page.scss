@@ -1,8 +1,11 @@
 .page {
+  overflow: hidden;
+  min-height: 90vh;
+
   &__content {
     max-width: 900px;
     width: calc(100% - var(--space-gutter) * 2);
-    margin: calc(var(--space-gutter) * 2) auto;
+    margin: 0 auto;
 
     & > * + * {
       margin-top: var(--space-section);
@@ -10,10 +13,33 @@
   }
 
   &__header {
-    img {
-      max-width: 200px;
-      margin: 0 auto;
+    background-color: var(--c-yellow);
+    text-align: right;
+    position: relative;
+
+    &::after {
+      background-color: var(--c-yellow);
+      content: '';
+      display: block;
+      width: 200vw;
+      height: 200%;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%) translateY(2vw) rotate(1deg);
+      z-index: -1;
     }
+
+    img {
+      max-width: 100px;
+      display: inline-block;
+    }
+  }
+
+  &__header-logo {
+    margin: var(--space-gutter) 0;
+    width: 100%;
+    max-width: 900px;
   }
 
   &__navigation {
