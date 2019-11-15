@@ -1,0 +1,22 @@
+.onboarding {
+  max-width: 500px;
+  text-align: center;
+
+  &__form {
+    text-align: left;
+
+    .button__icon {
+      margin: 0;
+    }
+  }
+
+  &__text {
+    font-weight: bold;
+  }
+
+  &__new-group {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em 2em;
+  }
+}
