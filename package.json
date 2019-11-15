@@ -90,9 +90,7 @@
     "IE 11"
   ],
   "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
+    "hooks": {}
   },
   "prettier": {
     "singleQuote": true,

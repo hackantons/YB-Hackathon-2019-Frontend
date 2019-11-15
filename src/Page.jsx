@@ -6,8 +6,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './Page.scss';
 
 import Content from './Components/Page/Content.jsx';
-import Form from './Components/Page/Form.jsx';
+import Profile from './Components/Profile/index.jsx';
 import DataViz from './Components/Page/DataViz.jsx';
+import { Loader } from '@theme';
 
 import { idb, uuidv4 } from './store/idb';
 
@@ -28,7 +29,7 @@ export default () => {
   if (user === '') {
     return (
       <div className="page-loading">
-        <div className="page-loading__loader" />
+        <Loader className="page-loading__loader" />
       </div>
     );
   }
@@ -52,7 +53,7 @@ export default () => {
         </nav>
         <Switch>
           <Route path="/profile">
-            <Form />
+            <Profile />
           </Route>
           <Route path="/live">
             <DataViz />
