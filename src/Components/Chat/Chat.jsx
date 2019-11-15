@@ -22,15 +22,37 @@ export default (props: Props) => {
   return (
     <div className="chat">
       <div className="chat__message-stream">
-        <Message type="text" data={{ origin: 'sent', timestamp: 1573761600 }} />
         <Message
           type="text"
-          data={{ origin: 'recieved', timestamp: 1573761600 }}
+          data={{
+            origin: 'sent',
+            time: 25,
+            user: 'Simu',
+            sector: 'Sektor A8',
+            text: 'Leute wie geil isch das de!',
+          }}
+        />
+        <Message
+          type="text"
+          data={{
+            origin: 'recieved',
+            time: 26,
+            user: 'Tim',
+            sector: 'Sektor A10',
+            text: 'Gäu sind anders viu Lüt da…',
+          }}
         />
         <Message
           type="poll"
-          data={{ origin: 'recieved', timestamp: 1573761600 }}
+          data={{
+            origin: 'recieved',
+            time: 30,
+            user: 'YB',
+            sector: false,
+            text: 'Wie siehst du die Chance das YB heute den Titel holt?',
+          }}
         />
+        <div className="chat__message-stream-matchtime">35:22</div>
       </div>
       <div className="chat__form">
         <Form
@@ -53,9 +75,9 @@ export default (props: Props) => {
         >
           <InputTextarea
             name="message"
-            label="Message"
             placeholder="Schreibe eine Nachricht"
             register={{ required: 'This field is required' }}
+            rows="2"
           />
           <FormControls>
             {error !== '' && <FormError>{error}</FormError>}
