@@ -125,6 +125,10 @@
         position: relative;
       }
     }
+
+    .form__select-wrapper:after {
+      top: 32%;
+    }
   }
 
   &--poll-like {
@@ -150,6 +154,12 @@
     background-color: var(--c-yellow);
     padding-top: var(--space-gutter);
     padding-bottom: var(--space-gutter-half);
+
+    .message__content {
+      &:after {
+        background-color: var(--c-yellow);
+      }
+    }
 
     .message__time {
       color: var(--c-p-white);

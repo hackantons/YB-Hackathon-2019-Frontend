@@ -1,0 +1,38 @@
+.radio {
+  &__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-gutter);
+  }
+
+  &__play-button {
+    font-size: var(--fs-h3);
+    margin-left: var(--space-gutter);
+  }
+
+  &__audio-switch {
+    display: flex;
+    align-items: center;
+
+    .switch {
+      margin: 0 var(--space-gutter);
+    }
+  }
+}
+
+.section--radio {
+  margin-top: -1rem !important;
+}
+
+.switch {
+  border-color: #e4951e;
+
+  &.on {
+    background-color: #e4951e;
+  }
+
+  .switch-toggle {
+    border-color: var(--c-p-white);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}

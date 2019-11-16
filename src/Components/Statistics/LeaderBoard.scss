@@ -1,0 +1,45 @@
+.leaderboard {
+  position: relative;
+
+  &__board {
+    padding: var(--space-gutter-half) 0;
+  }
+
+  .leaderboard__board-head {
+    font-weight: 200;
+  }
+
+  .leaderboard__board-row,
+  .leaderboard__board-head {
+    padding: var(--space-inside) 0;
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+      &:last-child {
+        flex: 0 0 20px;
+        max-width: 20px;
+        text-align: right;
+      }
+
+      flex: 0 0 calc((100% - 40px) / 4);
+      max-width: calc((100% - 40px) / 4);
+    }
+
+    + .leaderboard__board-row {
+      border-top: 1px solid var(--c-gray);
+    }
+  }
+
+  &__indicator {
+    color: var(--c-gray);
+    font-weight: 600;
+
+    &--up {
+      color: var(--c-green);
+    }
+    &--down {
+      color: var(--c-red);
+    }
+  }
+}

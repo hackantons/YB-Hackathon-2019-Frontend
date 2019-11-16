@@ -10,18 +10,20 @@ import Content from './Components/Page/Content.jsx';
 import Profile from './Components/Profile/index.jsx';
 
 import { connect } from 'react-redux';
-import Statistics from './Components/Page/Statistics.jsx';
+import Statistics from './Components/Statistics/Statistics.jsx';
 
 const App = ({ user }) => {
   return (
     <div className="page">
-      <header className="page__header">
-        <div className="page__header-logo">
-          <img src="static/img/bscyb-logo.png" alt="BSCYB Logo" />
-        </div>
-      </header>
       {user.group === '' || user.id === '' ? (
-        <Onboarding className="page__main" />
+        <React.Fragment>
+          <header className="page__header">
+            <div className="page__header-logo">
+              <img src="static/img/bscyb-logo.png" alt="BSCYB Logo" />
+            </div>
+          </header>
+          <Onboarding className="page__main" />
+        </React.Fragment>
       ) : (
         <Router>
           <nav className="page__navigation">
