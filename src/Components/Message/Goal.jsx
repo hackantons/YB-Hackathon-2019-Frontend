@@ -25,7 +25,7 @@ export default (props: Props) => {
         <div className="goal__scorer">
           <img
             className="goal__scorer-img"
-            src="https://placehold.co/80x120"
+            src="/static/img/stream/player.png"
             alt="Placeholder"
           />
           <div className="goal__scorer-content">
