@@ -14,8 +14,25 @@
     text-transform: none;
   }
 
+  &__sentiment {
+    margin-right: var(--space-gutter-half);
+
+    &--positive {
+      color: var(--c-green);
+    }
+
+    &--negative {
+      color: var(--c-red);
+    }
+
+    &--neutral {
+      color: var(--c-gray);
+    }
+  }
+
   &__content {
     position: relative;
+    padding-right: var(--space-gutter);
 
     > * {
       margin: var(--space-inside) 0;
@@ -238,6 +255,7 @@
       .goal__data {
         text-align: right;
         padding-right: var(--space-gutter);
+        padding-top: var(--space-gutter-half);
 
         span {
           display: block;
@@ -260,6 +278,8 @@
       img {
         display: inline-block;
         margin-right: var(--space-gutter-half);
+        width: 25px;
+        height: 25px;
       }
 
       color: var(--c-yellow);

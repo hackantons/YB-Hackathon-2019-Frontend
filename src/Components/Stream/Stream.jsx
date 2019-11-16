@@ -168,13 +168,7 @@ const Stream = (props: Props) => {
                   return <Message {...message} key={i} />;
                   break;
                 case 'poll-select':
-                  return (
-                    <PollSelect
-                      type={message.type}
-                      data={message.data}
-                      key={i}
-                    />
-                  );
+                  return <PollSelect {...message} key={i} />;
                   break;
                 case 'poll-like':
                   return <PollLike {...message} key={i} />;
@@ -218,7 +212,7 @@ const Stream = (props: Props) => {
           <InputTextarea
             label=""
             name="message"
-            placeholder="Schreibe eine Nachricht"
+            placeholder="Gib deinen Senf ab"
             register={{ required: 'This field is required' }}
             rows="2"
             onKeyPress={e => {
