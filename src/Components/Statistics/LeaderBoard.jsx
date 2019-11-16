@@ -22,7 +22,7 @@ export default (props: Props) => {
             <span>38</span>
             <span>+46</span>
             <span>91</span>
-            <span class="leaderboard__indicator leaderboard__indicator--up">
+            <span className="leaderboard__indicator leaderboard__indicator--up">
               +1
             </span>
           </div>
@@ -31,7 +31,7 @@ export default (props: Props) => {
             <span>38</span>
             <span>+63</span>
             <span>90</span>
-            <span class="leaderboard__indicator leaderboard__indicator--down">
+            <span className="leaderboard__indicator leaderboard__indicator--down">
               -1
             </span>
           </div>
@@ -40,14 +40,14 @@ export default (props: Props) => {
             <span>37</span>
             <span>+12</span>
             <span>88</span>
-            <span class="leaderboard__indicator">---</span>
+            <span className="leaderboard__indicator">---</span>
           </div>
           <div className="leaderboard__board-row">
             <span>BSC YB</span>
             <span>20</span>
             <span>+5</span>
             <span>55</span>
-            <span class="leaderboard__indicator leaderboard__indicator--up">
+            <span className="leaderboard__indicator leaderboard__indicator--up">
               +1
             </span>
           </div>
@@ -56,7 +56,7 @@ export default (props: Props) => {
             <span>20</span>
             <span>+5</span>
             <span>55</span>
-            <span class="leaderboard__indicator leaderboard__indicator--up">
+            <span className="leaderboard__indicator leaderboard__indicator--up">
               +1
             </span>
           </div>
@@ -65,7 +65,7 @@ export default (props: Props) => {
             <span>20</span>
             <span>+5</span>
             <span>55</span>
-            <span class="leaderboard__indicator leaderboard__indicator--up">
+            <span className="leaderboard__indicator leaderboard__indicator--up">
               +1
             </span>
           </div>
@@ -74,7 +74,7 @@ export default (props: Props) => {
             <span>20</span>
             <span>+5</span>
             <span>55</span>
-            <span class="leaderboard__indicator leaderboard__indicator--up">
+            <span className="leaderboard__indicator leaderboard__indicator--up">
               +1
             </span>
           </div>
@@ -83,7 +83,7 @@ export default (props: Props) => {
             <span>20</span>
             <span>+5</span>
             <span>55</span>
-            <span class="leaderboard__indicator leaderboard__indicator--up">
+            <span className="leaderboard__indicator leaderboard__indicator--up">
               +1
             </span>
           </div>
@@ -92,7 +92,7 @@ export default (props: Props) => {
             <span>20</span>
             <span>+5</span>
             <span>55</span>
-            <span class="leaderboard__indicator leaderboard__indicator--up">
+            <span className="leaderboard__indicator leaderboard__indicator--up">
               +1
             </span>
           </div>
