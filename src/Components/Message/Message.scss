@@ -307,15 +307,31 @@
     .message__image-img {
       flex: 0 0 60%;
       max-width: 60%;
+      display: block;
     }
 
     .message__image-cta {
       flex: 0 0 40%;
       max-width: 40%;
+      padding: var(--space-gutter-half);
+      position: relative;
+
+      .icon {
+        font-size: var(--fs-h3);
+        top: var(--space-gutter-half);
+        right: var(--space-gutter-half);
+        position: absolute;
+        padding-bottom: var(--space-gutter-half);
+        display: block;
+      }
     }
 
     .message__image-cta-text {
       font-size: var(--fs-h3);
+      bottom: 0;
+      position: absolute;
+      padding-bottom: var(--space-gutter-half);
+      display: block;
     }
   }
 }
