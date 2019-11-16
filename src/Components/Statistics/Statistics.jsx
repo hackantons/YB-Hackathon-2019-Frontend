@@ -6,6 +6,7 @@ import Match from './Match.jsx';
 import Radio from './Radio.jsx';
 import MatchInfo from './MatchInfo.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
+import LiveStream from './LiveStream.jsx';
 import { Link } from 'react-router-dom';
 
 export default (props: Props) => {
@@ -27,6 +28,7 @@ export default (props: Props) => {
         </Link>
       </nav>
       <Radio />
+      <LiveStream />
       <MatchInfo />
       <LeaderBoard />
     </div>
