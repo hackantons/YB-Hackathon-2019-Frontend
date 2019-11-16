@@ -1,30 +1,24 @@
 // @flow
 import React from 'react';
 import cn from 'classnames';
+import { spielminuten } from '@vendor/helpers';
 
 import './Message.scss';
+import { connect } from 'react-redux';
 
 type Props = {
   type: string,
   data: Object,
 };
 
-export default (props: Props) => {
-  return (
-    <div
-      className={
-        'message message--' + props.type + ' message--' + props.data.origin
-      }
-    >
-      <div className="message__header">
-        {props.data.time && (
-          <span className="message__time">{props.data.time}</span>
-        )}
-      </div>
-      <div className="message__content">
-        <h5>{props.data.label}</h5>
-        <p>{props.data.text}</p>
-      </div>
-    </div>
-  );
+const MatchNote = (props: Props) => {
+  console.log(props);
+  return '';
 };
+
+export default connect(state => {
+  return {
+    user: state.user,
+    started: state.gameStarted,
+  };
+})(MatchNote);

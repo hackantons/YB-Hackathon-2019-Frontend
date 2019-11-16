@@ -29,7 +29,7 @@ export default (props: Props) => {
         <div className="message__offer">
           <img
             className="message__offer-img"
-            src="https://placehold.co/100x100"
+            src="/static/img/stream/feed-coins-offer1@2x.png"
             alt="Placeholder"
           />
           <div className="message__offer-content">

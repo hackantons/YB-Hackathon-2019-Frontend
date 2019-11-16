@@ -18,10 +18,22 @@
       margin: 0 var(--space-gutter);
     }
   }
+
+  &__play-time {
+    font-size: var(--fs-h6);
+    font-weight: 200;
+    line-height: 1;
+    margin-left: var(--space-gutter-half);
+
+    .bold {
+      font-weight: 400;
+      display: block;
+    }
+  }
 }
 
 .section--radio {
-  margin-top: -1rem !important;
+  margin-top: -0.25rem !important;
 }
 
 .switch {

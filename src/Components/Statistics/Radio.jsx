@@ -18,7 +18,11 @@ export default (props: Props) => {
         <h2 className="radio__title">
           Radio GS
           <span className="radio__play-button">
-            <Icon icon="mdi/play-circle-outline" />
+            <Icon icon="mdi/pause-circle-outline" />
+          </span>
+          <span className="radio__play-time">
+            Spielzeit
+            <span className="bold">36:42</span>
           </span>
         </h2>
         <div className="radio__audio-switch">

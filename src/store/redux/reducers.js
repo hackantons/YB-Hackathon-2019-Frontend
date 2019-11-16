@@ -48,6 +48,14 @@ export default function(state = initialState, action) {
       };
     }
 
+    case 'ADD_MESSAGE': {
+      const { message } = action.payload;
+      return {
+        ...state,
+        messages: [...state.messages, message],
+      };
+    }
+
     default:
       return state;
   }

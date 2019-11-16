@@ -1,6 +1,16 @@
 .profile-data {
   &__partner-section {
     margin-top: calc(var(--space-section) * 2);
+    h1,
+    h2 {
+      text-align: center;
+    }
+  }
+
+  &__buybeerbutton {
+    .button {
+      margin: calc(var(--space-section) * 2) auto 0 auto;
+    }
   }
 
   &__partner-desc {
