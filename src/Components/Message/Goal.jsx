@@ -26,7 +26,7 @@ export default (props: Props) => {
           <img
             className="goal__scorer-img"
             src="/static/img/stream/player.png"
-            alt="Placeholder"
+            alt="Player"
           />
           <div className="goal__scorer-content">
             <h3>Jean-Pierre Nsame</h3>
@@ -42,8 +42,8 @@ export default (props: Props) => {
         <div className="goal__coins">
           <img
             className="message__offer-img"
-            src="https://placehold.co/20x20"
-            alt="Placeholder"
+            src="/static/img/stream/coin-yellow@2x.png"
+            alt="Coin"
           />{' '}
           +20 YB Coins
         </div>

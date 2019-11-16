@@ -19,7 +19,7 @@ export default ({ className }: { className: string } = '') => {
       <div className="coins__offer">
         <img
           className="coins__offer-img"
-          src="https://placehold.co/100x100"
+          src="/static/img/stream/profil-coins-offer1@2x.png"
           alt="Placeholder"
         />
         <div className="coins__offer-content">
@@ -32,7 +32,7 @@ export default ({ className }: { className: string } = '') => {
       <div className="coins__offer">
         <img
           className="coins__offer-img"
-          src="https://placehold.co/100x100"
+          src="/static/img/stream/profil-coins-offer2@2x.png"
           alt="Placeholder"
         />
         <div className="coins__offer-content">
