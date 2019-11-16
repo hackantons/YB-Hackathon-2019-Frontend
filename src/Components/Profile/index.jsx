@@ -52,7 +52,18 @@ export default (
             style="nobutton"
             text="App herunterladen"
             icon="mdi/download"
-            large
+            onClick={() => {
+              window.installEvent.prompt();
+              window.installEvent.userChoice.then(choiceResult => {
+                if (choiceResult.outcome === 'accepted') {
+                  console.log('User accepted the A2HS prompt');
+                  document.body.classList.remove('can-install');
+                } else {
+                  console.log('User dismissed the A2HS prompt');
+                }
+                window.installEvent = null;
+              });
+            }}
           />
         </div>
       )}
