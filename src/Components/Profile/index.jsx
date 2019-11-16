@@ -46,6 +46,16 @@ export default (
         </div>
       </div>
       <Partner className="section section--leaderboard section--bkg-dark section--oblique-right profile-data__partner" />
+      {window.serviceWorkerEvent && (
+        <div className="section profile-data__dla">
+          <Button
+            style="nobutton"
+            text="App herunterladen"
+            icon="mdi/download"
+            large
+          />
+        </div>
+      )}
     </div>
   );
 };
