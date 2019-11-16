@@ -47,8 +47,6 @@ const Onboarding = ({
     const auth = await Auth.currentAuthenticatedUser();
     const JWT = auth.signInUserSession.idToken.jwtToken;
 
-    console.log('user token', JWT);
-
     axios.defaults.headers.common = {
       Authorization: JWT,
     };
