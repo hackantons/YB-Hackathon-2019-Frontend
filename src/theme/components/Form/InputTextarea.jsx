@@ -21,7 +21,6 @@ type Props = {
 
 const Textarea = (props: Props) => {
   const [id] = React.useState(() => uniqueId(props.name));
-  const [name] = React.useState(() => uniqueId(props.name, 'form'));
   return (
     <ConnectForm>
       {({ register, errors }) => (
@@ -41,10 +40,10 @@ const Textarea = (props: Props) => {
           <textarea
             className={cn(
               'form__textarea',
-              errors[name] ? 'form__textarea--error' : '',
+              errors[props.name] ? 'form__textarea--error' : '',
               props.classNameInput
             )}
-            name={name}
+            name={props.name}
             id={id}
             ref={register(props.register)}
             defaultValue={props.value}
@@ -52,8 +51,10 @@ const Textarea = (props: Props) => {
             rows={props.rows}
             onKeyPress={e => props.onKeyPress(e)}
           />
-          {errors[name] && (
-            <span className={cn('form__error')}>{errors[name].message}</span>
+          {errors[props.name] && (
+            <span className={cn('form__error')}>
+              {errors[props.name].message}
+            </span>
           )}
         </div>
       )}

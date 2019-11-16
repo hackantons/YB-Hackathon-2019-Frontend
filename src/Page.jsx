@@ -30,7 +30,7 @@ const App = props => {
 
   return (
     <div className="page">
-      {user.group === '' || user.id === '' ? (
+      {props.user.group === '' || props.user.id === '' ? (
         <React.Fragment>
           <header className="page__header">
             <div className="page__header-logo">
