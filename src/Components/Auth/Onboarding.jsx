@@ -136,6 +136,7 @@ const Onboarding = ({
           id="groupCreateForm"
           onSubmit={formData => {
             setFormProcessing(true);
+            console.log('name', formData.group);
             axios
               .post(endpointGroups, {
                 name: formData.group,

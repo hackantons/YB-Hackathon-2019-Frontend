@@ -17,9 +17,14 @@ import {
   InputText,
 } from '@theme';
 import { idb, uuidv4 } from '@/store/idb';
-import { updateUserName, updateUserId } from '@redux/actions';
+import { updateUserName, updateUserId, updateUserGroup } from '@redux/actions';
 
-export const ProfileData = ({ className, user, updateUserName }) => {
+export const ProfileData = ({
+  className,
+  user,
+  updateUserName,
+  updateUserGroup,
+}) => {
   const [formProcessing: boolean, setFormProcessing] = React.useState(false);
   const [error: string, setError] = React.useState('');
   const [success: string, setSuccess] = React.useState('');
@@ -37,12 +42,21 @@ export const ProfileData = ({ className, user, updateUserName }) => {
       }}
       className={cn(className)}
     >
-      <FormFieldset legend="Personal Data">
+      <br />
+      <FormFieldset>
         <InputText
           name="user"
           label="User"
           register={{ required: 'This field is required' }}
           value={user.id}
+          disabled={true}
+          large
+        />
+        <InputText
+          name="group"
+          label="Gruppe"
+          register={{ required: 'This field is required' }}
+          value={user.group}
           disabled={true}
           large
         />
@@ -57,6 +71,13 @@ export const ProfileData = ({ className, user, updateUserName }) => {
       <FormControls>
         {error !== '' && <FormError>{error}</FormError>}
         {success !== '' && <FormSuccess>{success}</FormSuccess>}
+        <Button
+          text="Aus Gruppe austreten"
+          style="nobutton"
+          onClick={() => {
+            updateUserGroup('');
+          }}
+        />{' '}
         <Button
           text="Speichern"
           type="submit"
@@ -74,5 +95,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { updateUserName, updateUserId }
+  { updateUserName, updateUserId, updateUserGroup }
 )(ProfileData);
