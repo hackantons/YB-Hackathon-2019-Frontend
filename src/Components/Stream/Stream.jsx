@@ -149,7 +149,11 @@ const Stream = (props: Props) => {
       <div className="stream__message-stream">
         <div className="stream__message-wrapper">
           {props.messages
-            .filter(message => message && message.group === props.user.group)
+            .filter(
+              message =>
+                (message && message.group === props.user.group) ||
+                message.group === ''
+            )
             .map(function(message, i) {
               switch (message.type) {
                 case 'text':

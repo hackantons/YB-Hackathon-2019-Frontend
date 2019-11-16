@@ -13,6 +13,7 @@ export { default as InputTextarea } from './components/Form/InputTextarea.jsx';
 export { default as InputSelect } from './components/Form/InputSelect.jsx';
 export { default as InputRadio } from './components/Form/InputRadio.jsx';
 export { default as Loader } from './components/Misc/Loader.jsx';
+export { default as ShadowBox } from './components/Box/ShadowBox.jsx';
 export {
   default as InputCheckboxGroup,
 } from './components/Form/InputCheckboxGroup.jsx';

@@ -13,3 +13,6 @@ export const endpointProfile =
 
 export const endpointGroups =
   'https://ug4r12he1a.execute-api.eu-central-1.amazonaws.com/prod/group/';
+
+export const endpointMobile =
+  'https://oxzltz1bvj.execute-api.eu-west-1.amazonaws.com/prod/sms';

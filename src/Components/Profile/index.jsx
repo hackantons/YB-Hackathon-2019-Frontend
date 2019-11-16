@@ -7,11 +7,16 @@ import ProfileData from './ProfileData.jsx';
 import Coins from './Coins.jsx';
 import Partner from './Partner.jsx';
 
+import BuyBeer from './BuyBeer.jsx';
+
 import type { User } from '@vendor/types';
+import { Button } from '@theme/index';
 
 export default (
   { className, user }: { className: string, user: User } = ''
 ) => {
+  const [buyBeer: boolean, setBuyBeer] = React.useState(false);
+
   return (
     <div className={cn(className, 'profile-data')}>
       <h2>Profil</h2>
@@ -19,6 +24,13 @@ export default (
       <div className="section section--bkg-yellow section--oblique-right">
         <Coins className="profile-data__coins" />
       </div>
+      <Button
+        text="Buy Beer"
+        icon="mdi/beer"
+        style="primary"
+        onClick={() => setBuyBeer(true)}
+      />
+      {buyBeer && <BuyBeer close={() => setBuyBeer(false)} />}
       <div className="section profile-data__partner-section">
         <h1>Die besten Deals.</h1>
         <h2>Von deinen YB Partnern</h2>
