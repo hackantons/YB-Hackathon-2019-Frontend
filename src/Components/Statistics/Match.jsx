@@ -23,7 +23,7 @@ export default (props: Props) => {
               <p>BSC YB</p>
             </div>
             <div className="match__score">
-              <span className="match__score-home">0</span>
+              <span className="match__score-home">1</span>
               <span className="match__score-divider">:</span>
               <span className="match__score-guest">0</span>
             </div>

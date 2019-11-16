@@ -137,22 +137,6 @@ const Stream = (props: Props) => {
   const [error: string, setError] = React.useState('');
   const stream = React.useRef();
 
-  /*
-  socket.onmessage = function(event) {
-    props.addMessages(event.data.split('\n').map(data => JSON.parse(data)));
-    stream.current.scrollTop = stream.current.scrollHeight;
-
-    stream.current.scrollTop = 1000;
-
-    console.log('stream updated');
-    console.log(stream.current.scrollTop, stream.current.scrollHeight);
-  };
-   */
-
-  const [timeNow: Number, setTimeNow] = React.useState(new Date().getTime());
-
-  setInterval(() => setTimeNow(new Date().getTime()), 1000);
-
   return (
     <div className="stream" ref={stream}>
       <div className="stream__message-stream">
@@ -189,7 +173,7 @@ const Stream = (props: Props) => {
               }
             })}
           <div className="stream__message-stream-matchtime">
-            {spielminuten(props.started, timeNow)}
+            {/*spielminuten(props.started, timeNow)*/}
           </div>
         </div>
       </div>
@@ -205,7 +189,7 @@ const Stream = (props: Props) => {
                 name: props.user.name,
                 message: data.message,
                 type: 'text',
-                time: new Date().getTime(),
+                time: '0',
               })
               .then(resp => {
                 setFormProcessing(false);

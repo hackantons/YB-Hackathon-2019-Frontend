@@ -119,7 +119,9 @@ const Onboarding = ({
         text="Erstelle eine neue Gruppe"
         style="secondary"
         className="onboarding__new-group"
-        onClick={() => setNewGroup('new')}
+        onClick={() => {
+          setNewGroup('new');
+        }}
       />
     </React.Fragment>
   );
@@ -175,7 +177,9 @@ const Onboarding = ({
         </Form>
         <Button
           text="zurück"
-          onClick={() => setNewGroup('')}
+          onClick={() => {
+            setNewGroup('');
+          }}
           style={'nobutton'}
         />
       </React.Fragment>
@@ -185,10 +189,11 @@ const Onboarding = ({
   return <div className={cn(className, 'onboarding')}>{form}</div>;
 };
 
-const mapStateToProps = state => {
-  return state;
-};
 export default connect(
-  mapStateToProps,
+  state => {
+    return {
+      user: state.user,
+    };
+  },
   { updateUserGroup, updateUserId, updateUserName }
 )(Onboarding);

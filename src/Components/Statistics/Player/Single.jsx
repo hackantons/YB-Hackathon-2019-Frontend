@@ -5,6 +5,8 @@ import cn from 'classnames';
 import './Single.scss';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
+import LeaderBoard from '../LeaderBoard.jsx';
+
 import { Icon } from '@theme';
 
 export default (props: Props) => {
@@ -134,6 +136,7 @@ export default (props: Props) => {
           </div>
         </div>
       </div>
+      <LeaderBoard />
     </div>
   );
 };

@@ -5,6 +5,17 @@
   padding: var(--space-inside) var(--space-inside) var(--space-inside)
     var(--stream-indent);
 
+  .message__permalink {
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
   + .message {
     margin-top: var(--space-gutter);
   }
@@ -308,6 +319,10 @@
       flex: 0 0 60%;
       max-width: 60%;
       display: block;
+      background-image: url('/static/img/stream/feed-photo@2x.png');
+      background-size: cover;
+      background-position: 50%;
+      padding-top: 40%;
     }
 
     .message__image-cta {

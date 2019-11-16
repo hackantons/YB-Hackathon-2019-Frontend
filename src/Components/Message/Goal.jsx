@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 import { spielminuten } from '@vendor/helpers';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './Message.scss';
 
@@ -16,10 +17,8 @@ const Goal = (props: Props) => {
   return (
     <div className={cn('message', 'message--' + props.type)}>
       <div className="message__header">
-        {props.time && (
-          <span className="message__time">
-            {spielminuten(props.started, props.time)}
-          </span>
+        {props.time !== '0' && (
+          <span className="message__time">{props.time}</span>
         )}
       </div>
       <div className="message__content">
@@ -40,6 +39,10 @@ const Goal = (props: Props) => {
         </div>
       </div>
       <div className="message__footer">
+        <Link
+          to="/statistics/player/player1"
+          className="message__permalink"
+        ></Link>
         <div className="goal__coins">
           <img
             className="message__offer-img"
