@@ -1,35 +1,39 @@
 // @flow
 import React from 'react';
 import cn from 'classnames';
+import { spielminuten } from '@vendor/helpers';
 
 import './Message.scss';
+import { connect } from 'react-redux';
 
 type Props = {
   type: string,
   data: Object,
 };
 
-export default (props: Props) => {
+const Message = (props: Props) => {
   return (
-    <div
-      className={
-        'message message--' + props.type + ' message--' + props.data.origin
-      }
-    >
+    <div className={cn('message', 'message--' + props.type)}>
       <div className="message__header">
-        {props.data.time && (
-          <span className="message__time">{props.data.time}</span>
+        {props.time && (
+          <span className="message__time">
+            {spielminuten(props.started, props.time)}
+          </span>
         )}
       </div>
       <div className="message__content">
-        <p>{props.data.text}</p>
+        <p>{props.message}</p>
       </div>
       <div className="message__footer">
-        <span className="message__sender">{props.data.user}</span>
-        {props.data.sector && (
-          <span className="message__sector">{props.data.sector}</span>
-        )}
+        <span className="message__sender">{props.name}</span>
       </div>
     </div>
   );
 };
+
+export default connect(state => {
+  return {
+    user: state.user,
+    started: state.gameStarted,
+  };
+})(Message);

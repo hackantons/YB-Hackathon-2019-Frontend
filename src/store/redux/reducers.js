@@ -4,6 +4,8 @@ const initialState = {
     name: '',
     group: '',
   },
+  messages: [],
+  gameStarted: 1573860611162,
 };
 
 export default function(state = initialState, action) {
@@ -38,6 +40,14 @@ export default function(state = initialState, action) {
         },
       };
     }
+    case 'ADD_MESSAGES': {
+      const { messages } = action.payload;
+      return {
+        ...state,
+        messages: state.messages.concat(messages),
+      };
+    }
+
     default:
       return state;
   }

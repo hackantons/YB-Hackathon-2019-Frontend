@@ -10,18 +10,35 @@ import Content from './Components/Page/Content.jsx';
 import Profile from './Components/Profile/index.jsx';
 
 import { connect } from 'react-redux';
-import Statistics from './Components/Page/Statistics.jsx';
+import Statistics from './Components/Statistics/Statistics.jsx';
+import { addMessages, updateWs } from '@redux/actions';
 
-const App = ({ user }) => {
+window.socket = new WebSocket('wss://stream.bscyb.dev/stream');
+
+const App = props => {
+  const [messagesWS, setMessagesWS] = React.useState(false);
+
+  React.useEffect(() => {
+    //return;
+    if (!messagesWS) {
+      setMessagesWS(socket);
+      socket.onmessage = function(event) {
+        props.addMessages(event.data.split('\n').map(data => JSON.parse(data)));
+      };
+    }
+  });
+
   return (
     <div className="page">
-      <header className="page__header">
-        <div className="page__header-logo">
-          <img src="static/img/bscyb-logo.png" alt="BSCYB Logo" />
-        </div>
-      </header>
-      {user.group === '' || user.id === '' ? (
-        <Onboarding className="page__main" />
+      {props.user.group === '' || props.user.id === '' ? (
+        <React.Fragment>
+          <header className="page__header">
+            <div className="page__header-logo">
+              <img src="static/img/bscyb-logo.png" alt="BSCYB Logo" />
+            </div>
+          </header>
+          <Onboarding className="page__main" />
+        </React.Fragment>
       ) : (
         <Router>
           <nav className="page__navigation">
@@ -38,7 +55,7 @@ const App = ({ user }) => {
           <div className="page__content">
             <Switch>
               <Route path="/profile">
-                <Profile user={user} />
+                <Profile />
               </Route>
               <Route path="/statistics">
                 <Statistics />
@@ -54,7 +71,14 @@ const App = ({ user }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return state;
-};
-export default connect(mapStateToProps)(App);
+export default connect(
+  state => {
+    return {
+      user: state.user,
+      messages: state.messages,
+    };
+  },
+  {
+    addMessages,
+  }
+)(App);

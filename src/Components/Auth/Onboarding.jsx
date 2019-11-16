@@ -10,9 +10,15 @@ import axios from 'axios';
 
 import './Onboarding.scss';
 import { connect } from 'react-redux';
-import { updateUserGroup, updateUserId } from '@redux/actions';
+import { updateUserGroup, updateUserId, updateUserName } from '@redux/actions';
 
-const Onboarding = ({ className, user, updateUserGroup, updateUserId }) => {
+const Onboarding = ({
+  className,
+  user,
+  updateUserGroup,
+  updateUserId,
+  updateUserName,
+}) => {
   const [formProcessing: boolean, setFormProcessing] = React.useState(false);
   const [newGroup: string, setNewGroup] = React.useState('');
   const [error: string, setError] = React.useState('');
@@ -48,6 +54,10 @@ const Onboarding = ({ className, user, updateUserGroup, updateUserId }) => {
     };
 
     const dbSet = await idb.set('userId', dbUser);
+    const dbUserName = await idb.get('userName');
+    if (dbUserName) {
+      updateUserName(dbUserName);
+    }
     updateUserId(dbUser);
   };
 
@@ -79,7 +89,6 @@ const Onboarding = ({ className, user, updateUserGroup, updateUserId }) => {
           axios
             .get(endpointGroups + data.group + '/')
             .then(resp => {
-              console.log(resp);
               setNewGroup(data.group);
               setFormProcessing(false);
             })
@@ -182,5 +191,5 @@ const mapStateToProps = state => {
 };
 export default connect(
   mapStateToProps,
-  { updateUserGroup, updateUserId }
+  { updateUserGroup, updateUserId, updateUserName }
 )(Onboarding);

@@ -77,3 +77,30 @@ p.error {
 p.success {
   color: var(--c-green);
 }
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+progress[value]::-webkit-progress-bar,
+progress[value]::-moz-progress-bar {
+  background-color: var(--c-gray-hover);
+}
+
+progress[value]::-webkit-progress-value,
+progress[value]::-moz-progress-value {
+  background-color: var(--c-yellow);
+}
+
+progress::-webkit-progress-value,
+progress::-moz-progress-value {
+  background-color: var(--c-yellow);
+}
+
+progress[value] {
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background-color: var(--c-yellow);
+}

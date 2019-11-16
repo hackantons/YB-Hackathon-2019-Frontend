@@ -18,3 +18,10 @@ export const updateUserGroup = group => ({
     group,
   },
 });
+
+export const addMessages = messages => ({
+  type: 'ADD_MESSAGES',
+  payload: {
+    messages,
+  },
+});
