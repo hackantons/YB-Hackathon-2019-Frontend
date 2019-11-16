@@ -1,21 +1,19 @@
 // @flow
 import React from 'react';
 import cn from 'classnames';
-
 import { spielminuten } from '@vendor/helpers';
+
+import './Message.scss';
 import { connect } from 'react-redux';
 
-import { Icon, Button } from '@theme';
+import { Icon } from '@theme';
 
 type Props = {
   type: string,
   data: Object,
 };
 
-const Offer = (props: Props) => {
-  const [formProcessing: boolean, setFormProcessing] = React.useState(false);
-  const [error: string, setError] = React.useState('');
-
+const Message = (props: Props) => {
   return (
     <div className={cn('message', 'message--' + props.type)}>
       <div className="message__header">
@@ -26,20 +24,21 @@ const Offer = (props: Props) => {
         )}
       </div>
       <div className="message__content">
-        <h3>{props.label}</h3>
-        <div className="message__offer">
+        <figure className="message__image-figure">
           <img
-            className="message__offer-img"
-            src="/static/img/stream/feed-coins-offer1@2x.png"
-            alt="Placeholder"
+            className="message__image-img"
+            src="/static/img/stream/feed-photo@2x.png"
+            alt="Selfie"
           />
-          <div className="message__offer-content">
-            <h5>Nike Mercurial Superfly 6 Academy</h5>
-            <p>50% Rabatt</p>
-            <span className="offer__costs">123.46 CHF</span>
-            <Button text="Deal sichern" style="secondary" />
+          <div className="message__image-cta">
+            <Icon icon="mdi/share" />
+            <span className="message__image-cta-text">auf Fan-Wall posten</span>
           </div>
-        </div>
+        </figure>
+        <p>{props.message}</p>
+      </div>
+      <div className="message__footer">
+        <span className="message__sender">{props.name}</span>
       </div>
     </div>
   );
@@ -50,4 +49,4 @@ export default connect(state => {
     user: state.user,
     started: state.gameStarted,
   };
-})(Offer);
+})(Message);

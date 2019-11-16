@@ -27,8 +27,13 @@ const App = props => {
           let dataObject = false;
           try {
             dataObject = JSON.parse(data);
-          } catch (error) {}
+          } catch (error) {
+            console.log('error', data);
+          }
           if (dataObject !== false) {
+            if (dataObject.time === 0) {
+              dataObject.time = new Date().getTime();
+            }
             props.addMessage(dataObject);
           }
         });

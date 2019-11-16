@@ -12,8 +12,21 @@ type Props = {
 };
 
 const MatchNote = (props: Props) => {
-  console.log(props);
-  return '';
+  return (
+    <div className={cn('message', 'message--' + props.type)}>
+      <div className="message__header">
+        {props.time && (
+          <span className="message__time">
+            {spielminuten(props.started, props.time)}
+          </span>
+        )}
+      </div>
+      <div className="message__content">
+        <h5>{props.label}</h5>
+        <p>{props.message}</p>
+      </div>
+    </div>
+  );
 };
 
 export default connect(state => {

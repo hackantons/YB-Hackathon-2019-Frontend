@@ -6,6 +6,8 @@ import { spielminuten } from '@vendor/helpers';
 import './Message.scss';
 import { connect } from 'react-redux';
 
+import { Icon } from '@theme';
+
 type Props = {
   type: string,
   data: Object,
@@ -22,7 +24,19 @@ const Message = (props: Props) => {
         )}
       </div>
       <div className="message__content">
-        <p>{props.message}</p>
+        <p>
+          {props.message}
+          {props.sentiment && (
+            <span
+              className={cn(
+                'message__sentiment',
+                'message__sentiment--' + props.sentiment.toLowerCase()
+              )}
+            >
+              <Icon icon={'mdi/face-' + props.sentiment.toLowerCase()} />
+            </span>
+          )}
+        </p>
       </div>
       <div className="message__footer">
         <span className="message__sender">{props.name}</span>

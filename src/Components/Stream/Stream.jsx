@@ -12,6 +12,7 @@ import PollLike from '../Message/PollLike.jsx';
 import MatchNote from '../Message/MatchNote.jsx';
 import Offer from '../Message/Offer.jsx';
 import Goal from '../Message/Goal.jsx';
+import Image from '../Message/Image.jsx';
 
 import { spielminuten } from '@vendor/helpers';
 
@@ -168,37 +169,22 @@ const Stream = (props: Props) => {
                   return <Message {...message} key={i} />;
                   break;
                 case 'poll-select':
-                  return (
-                    <PollSelect
-                      type={message.type}
-                      data={message.data}
-                      key={i}
-                    />
-                  );
+                  return <PollSelect {...message} key={i} />;
                   break;
                 case 'poll-like':
-                  return (
-                    <PollLike type={message.type} data={message.data} key={i} />
-                  );
+                  return <PollLike {...message} key={i} />;
                   break;
                 case 'matchnote':
-                  return (
-                    <MatchNote
-                      type={message.type}
-                      data={message.data}
-                      key={i}
-                    />
-                  );
+                  return <MatchNote {...message} key={i} />;
                   break;
                 case 'offer':
-                  return (
-                    <Offer type={message.type} data={message.data} key={i} />
-                  );
+                  return <Offer {...message} key={i} />;
                   break;
                 case 'goal':
-                  return (
-                    <Goal type={message.type} data={message.data} key={i} />
-                  );
+                  return <Goal {...message} key={i} />;
+                  break;
+                case 'image':
+                  return <Image {...message} key={i} />;
                   break;
               }
             })}
@@ -230,7 +216,7 @@ const Stream = (props: Props) => {
           <InputTextarea
             label=""
             name="message"
-            placeholder="Schreibe eine Nachricht"
+            placeholder="Gib deinen Senf ab"
             register={{ required: 'This field is required' }}
             rows="2"
             onKeyPress={e => {
@@ -246,7 +232,7 @@ const Stream = (props: Props) => {
               icon="mdi/send"
               type="submit"
               loading={formProcessing}
-              style="primary"
+              style="secondary"
             />
           </FormControls>
         </Form>

@@ -13,13 +13,13 @@ export default (props: Props) => {
             <div className="matchinfo__details-head">
               <span className="matchinfo__details-stat">62%</span>
               <span className="matchinfo__details-label">Ballbesitz</span>
-              <span className="matchinfo__details-stat"></span>
+              <span className="matchinfo__details-stat" />
             </div>
             <progress
               className="matchinfo__details-progress"
               max="100"
               value="62"
-            ></progress>
+            />
           </li>
           <li className="matchinfo__details-item">
             <div className="matchinfo__details-head">

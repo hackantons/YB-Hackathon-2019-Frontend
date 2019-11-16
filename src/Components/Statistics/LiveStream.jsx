@@ -10,7 +10,7 @@ export default (props: Props) => {
   const [switched, toggleSwitch] = React.useState(false);
 
   return (
-    <div className="section section--livestream section--bkg-black section--oblique-left">
+    <div className="section section--livestream section--bkg-dark section--oblique-left">
       <div className="livestream">
         <h2 className="livestream__title">Live Übertragung</h2>
         <h3 className="livestream__subtitle">5 CHF / 500 YB Coins</h3>

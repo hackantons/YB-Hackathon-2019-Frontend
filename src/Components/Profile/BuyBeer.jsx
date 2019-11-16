@@ -51,7 +51,7 @@ export default ({ className, close }) => {
               .then(resp => {
                 setFormProcessing(false);
                 e.target.reset();
-                setSuccess('Juhuu! Da wird sich jemand freuen! 🥂');
+                setSuccess('Juhuu! Da wird sich jemand freuen! 🍻');
               })
               .catch(() => {
                 setFormProcessing(false);
@@ -68,9 +68,9 @@ export default ({ className, close }) => {
               register={{
                 required: 'Das ist ein Pflichtfeld',
                 pattern: {
-                  value: /\+([0-9]{9})$/,
+                  value: /\+([0-9]{11})$/,
                   message:
-                    'Das Feld muss eine valide Handynummer sein (z.B. +79XXXXXXX)',
+                    'Das Feld muss eine valide Handynummer sein (z.B. +41790000000)',
                 },
               }}
               large
