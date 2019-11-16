@@ -13,6 +13,8 @@ import MatchNote from '../Message/MatchNote.jsx';
 import Offer from '../Message/Offer.jsx';
 import Goal from '../Message/Goal.jsx';
 
+import { spielminuten } from '@vendor/helpers';
+
 import {
   Button,
   Form,
@@ -144,6 +146,10 @@ const Stream = (props: Props) => {
     console.log(stream.current.scrollTop, stream.current.scrollHeight);
   };
 
+  const [timeNow: Number, setTimeNow] = React.useState(new Date().getTime());
+
+  setInterval(() => setTimeNow(new Date().getTime()), 1000);
+
   return (
     <div className="stream" ref={stream}>
       <div className="stream__message-stream">
@@ -194,7 +200,9 @@ const Stream = (props: Props) => {
                   break;
               }
             })}
-          <div className="stream__message-stream-matchtime">+2:35</div>
+          <div className="stream__message-stream-matchtime">
+            {spielminuten(props.started, timeNow)}
+          </div>
         </div>
       </div>
       <div className="stream__form">
@@ -249,6 +257,7 @@ const mapStateToProps = state => {
   return {
     user: state.user,
     messages: state.messages,
+    started: state.gameStarted,
   };
 };
 export default connect(
