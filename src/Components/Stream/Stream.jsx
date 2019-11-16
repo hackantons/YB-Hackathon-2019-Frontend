@@ -23,6 +23,7 @@ import {
 } from '@theme';
 
 import './Stream.scss';
+import { addMessages } from '@redux/actions';
 
 const streamData = [
   {
@@ -131,13 +132,24 @@ const streamData = [
 const Stream = (props: Props) => {
   const [formProcessing: boolean, setFormProcessing] = React.useState(false);
   const [error: string, setError] = React.useState('');
+  const stream = React.useRef();
+
+  socket.onmessage = function(event) {
+    props.addMessages(event.data.split('\n').map(data => JSON.parse(data)));
+    stream.current.scrollTop = stream.current.scrollHeight;
+
+    stream.current.scrollTop = 1000;
+
+    console.log('stream updated');
+    console.log(stream.current.scrollTop, stream.current.scrollHeight);
+  };
 
   return (
-    <div className="stream">
+    <div className="stream" ref={stream}>
       <div className="stream__message-stream">
         <div className="stream__message-wrapper">
           {props.messages
-            .filter(message => message.group === props.user.group)
+            .filter(message => message && message.group === props.user.group)
             .map(function(message, i) {
               switch (message.type) {
                 case 'text':
@@ -235,4 +247,9 @@ const mapStateToProps = state => {
     messages: state.messages,
   };
 };
-export default connect(mapStateToProps)(Stream);
+export default connect(
+  mapStateToProps,
+  {
+    addMessages,
+  }
+)(Stream);

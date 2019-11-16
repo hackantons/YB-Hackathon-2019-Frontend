@@ -11,7 +11,9 @@ import Profile from './Components/Profile/index.jsx';
 
 import { connect } from 'react-redux';
 import Statistics from './Components/Statistics/Statistics.jsx';
-import { addMessages } from '@redux/actions';
+import { addMessages, updateWs } from '@redux/actions';
+
+window.socket = new WebSocket('wss://stream.bscyb.dev/stream');
 
 const App = props => {
   const [messagesWS, setMessagesWS] = React.useState(false);
@@ -19,10 +21,8 @@ const App = props => {
   React.useEffect(() => {
     //return;
     if (!messagesWS) {
-      const socket = new WebSocket('wss://stream.bscyb.dev/stream');
       setMessagesWS(socket);
       socket.onmessage = function(event) {
-        console.log(event.data.split('\n').map(data => JSON.parse(data)));
         props.addMessages(event.data.split('\n').map(data => JSON.parse(data)));
       };
     }
@@ -71,11 +71,6 @@ const App = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    state,
-  };
-};
 export default connect(
   state => {
     return {

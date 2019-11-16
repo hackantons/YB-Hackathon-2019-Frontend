@@ -47,6 +47,7 @@ export default function(state = initialState, action) {
         messages: state.messages.concat(messages),
       };
     }
+
     default:
       return state;
   }
