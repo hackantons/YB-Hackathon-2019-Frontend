@@ -18,10 +18,8 @@ const Message = (props: Props) => {
   return (
     <div className={cn('message', 'message--' + props.type)}>
       <div className="message__header">
-        {props.time && (
-          <span className="message__time">
-            {spielminuten(props.started, props.time)}
-          </span>
+        {props.time !== '0' && (
+          <span className="message__time">{props.time}</span>
         )}
       </div>
       <div className="message__content">
