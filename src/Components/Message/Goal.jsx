@@ -39,7 +39,10 @@ const Goal = (props: Props) => {
         </div>
       </div>
       <div className="message__footer">
-        <Link to="/statistics" className="message__permalink"></Link>
+        <Link
+          to="/statistics/player/player1"
+          className="message__permalink"
+        ></Link>
         <div className="goal__coins">
           <img
             className="message__offer-img"

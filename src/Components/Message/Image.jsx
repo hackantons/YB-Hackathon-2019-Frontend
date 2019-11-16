@@ -34,7 +34,6 @@ const Message = (props: Props) => {
       </div>
       <div className="message__footer">
         <span className="message__sender">{props.name}</span>
-        <Link to="/statistics/fans" className="message__permalink"></Link>
       </div>
     </div>
   );
