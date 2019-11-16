@@ -49,6 +49,7 @@ const Text = (props: Props) => {
             defaultValue={props.value}
             placeholder={props.placeholder}
             type={props.type}
+            disabled={props.disabled}
           />
           {errors[name] && (
             <span className={cn('form__error')}>{errors[name].message}</span>

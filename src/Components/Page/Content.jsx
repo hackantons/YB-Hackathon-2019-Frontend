@@ -12,13 +12,7 @@ type Props = {
 };
 
 export default (props: Props) => {
-  const [isLoading: boolean, setLoading] = React.useState(false);
-  const click = () => {
-    setLoading(true);
-    window.setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  };
+  const [count, setCount] = React.useState(1);
 
   return (
     <div className={cn(props.className)}>

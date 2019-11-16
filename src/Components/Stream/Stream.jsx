@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
 import cn from 'classnames';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 import Message from '../Message/Message.jsx';
 
@@ -126,7 +128,7 @@ const streamData = [
   },
 ];
 
-export default (props: Props) => {
+const Stream = (props: Props) => {
   const [formProcessing: boolean, setFormProcessing] = React.useState(false);
   const [error: string, setError] = React.useState('');
 
@@ -134,69 +136,87 @@ export default (props: Props) => {
     <div className="stream">
       <div className="stream__message-stream">
         <div className="stream__message-wrapper">
-          {streamData.map(function(message, i) {
-            switch (message.type) {
-              case 'text':
-                return (
-                  <Message type={message.type} data={message.data} key={i} />
-                );
-                break;
-              case 'poll-select':
-                return (
-                  <PollSelect type={message.type} data={message.data} key={i} />
-                );
-                break;
-              case 'poll-like':
-                return (
-                  <PollLike type={message.type} data={message.data} key={i} />
-                );
-                break;
-              case 'matchnote':
-                return (
-                  <MatchNote type={message.type} data={message.data} key={i} />
-                );
-                break;
-              case 'offer':
-                return (
-                  <Offer type={message.type} data={message.data} key={i} />
-                );
-                break;
-              case 'goal':
-                return <Goal type={message.type} data={message.data} key={i} />;
-                break;
-            }
-          })}
+          {props.messages
+            .filter(message => message.group === props.user.group)
+            .map(function(message, i) {
+              switch (message.type) {
+                case 'text':
+                  return <Message {...message} key={i} />;
+                  break;
+                case 'poll-select':
+                  return (
+                    <PollSelect
+                      type={message.type}
+                      data={message.data}
+                      key={i}
+                    />
+                  );
+                  break;
+                case 'poll-like':
+                  return (
+                    <PollLike type={message.type} data={message.data} key={i} />
+                  );
+                  break;
+                case 'matchnote':
+                  return (
+                    <MatchNote
+                      type={message.type}
+                      data={message.data}
+                      key={i}
+                    />
+                  );
+                  break;
+                case 'offer':
+                  return (
+                    <Offer type={message.type} data={message.data} key={i} />
+                  );
+                  break;
+                case 'goal':
+                  return (
+                    <Goal type={message.type} data={message.data} key={i} />
+                  );
+                  break;
+              }
+            })}
           <div className="stream__message-stream-matchtime">+2:35</div>
         </div>
       </div>
       <div className="stream__form">
         <Form
-          onSubmit={data => {
-            if (error === '') {
-              setError('This is an Error. Please submit again');
-            } else {
-              setError('');
-              setFormProcessing(true);
-              window.setTimeout(() => {
+          onSubmit={(data, e) => {
+            console.log(data);
+            e.target.reset();
+            //setFormProcessing(true);
+            axios
+              .post('https://stream.bscyb.dev/stream', {
+                group: props.user.group,
+                name: props.user.name,
+                message: data.message,
+                type: 'text',
+                time: new Date().getTime(),
+              })
+              .then(resp => {
                 setFormProcessing(false);
-                alert(
-                  'form submitted! Please visit the console for the output'
-                );
-                console.log(data);
-              }, 3000);
-            }
+              });
           }}
           className=""
         >
           <InputTextarea
+            label=""
             name="message"
             placeholder="Schreibe eine Nachricht"
             register={{ required: 'This field is required' }}
             rows="2"
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                //submitForm.current.submit();
+              }
+            }}
           />
           <FormControls>
             {error !== '' && <FormError>{error}</FormError>}
             <Button
+              text=""
               icon="mdi/send"
               type="submit"
               loading={formProcessing}
@@ -208,3 +228,11 @@ export default (props: Props) => {
     </div>
   );
 };
+
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+    messages: state.messages,
+  };
+};
+export default connect(mapStateToProps)(Stream);

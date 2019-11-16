@@ -50,6 +50,11 @@
       color: var(--c-p-semi);
     }
 
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     &--error {
       border-left-color: var(--c-red);
     }
@@ -153,6 +158,11 @@
   &__feedback-error {
     color: var(--c-red);
     margin-right: auto;
+  }
+
+  &__feedback-success {
+    color: var(--c-green);
+    margin-right: 1rem;
   }
 
   &--oneliner {
