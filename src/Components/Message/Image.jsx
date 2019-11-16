@@ -2,6 +2,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { spielminuten } from '@vendor/helpers';
+import { Link } from 'react-router-dom';
 
 import './Message.scss';
 import { connect } from 'react-redux';
@@ -23,11 +24,7 @@ const Message = (props: Props) => {
       </div>
       <div className="message__content">
         <figure className="message__image-figure">
-          <img
-            className="message__image-img"
-            src="/static/img/stream/feed-photo@2x.png"
-            alt="Selfie"
-          />
+          <div className="message__image-img"></div>
           <div className="message__image-cta">
             <Icon icon="mdi/share" />
             <span className="message__image-cta-text">auf Fan-Wall posten</span>
@@ -37,6 +34,7 @@ const Message = (props: Props) => {
       </div>
       <div className="message__footer">
         <span className="message__sender">{props.name}</span>
+        <Link to="/statistics/fans" className="message__permalink"></Link>
       </div>
     </div>
   );

@@ -5,6 +5,17 @@
   padding: var(--space-inside) var(--space-inside) var(--space-inside)
     var(--stream-indent);
 
+  .message__permalink {
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
   + .message {
     margin-top: var(--space-gutter);
   }
@@ -307,15 +318,35 @@
     .message__image-img {
       flex: 0 0 60%;
       max-width: 60%;
+      display: block;
+      background-image: url('/static/img/stream/feed-photo@2x.png');
+      background-size: cover;
+      background-position: 50%;
+      padding-top: 40%;
     }
 
     .message__image-cta {
       flex: 0 0 40%;
       max-width: 40%;
+      padding: var(--space-gutter-half);
+      position: relative;
+
+      .icon {
+        font-size: var(--fs-h3);
+        top: var(--space-gutter-half);
+        right: var(--space-gutter-half);
+        position: absolute;
+        padding-bottom: var(--space-gutter-half);
+        display: block;
+      }
     }
 
     .message__image-cta-text {
       font-size: var(--fs-h3);
+      bottom: 0;
+      position: absolute;
+      padding-bottom: var(--space-gutter-half);
+      display: block;
     }
   }
 }

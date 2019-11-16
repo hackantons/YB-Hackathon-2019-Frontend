@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 import { spielminuten } from '@vendor/helpers';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './Message.scss';
 
@@ -38,6 +39,7 @@ const Goal = (props: Props) => {
         </div>
       </div>
       <div className="message__footer">
+        <Link to="/statistics" className="message__permalink"></Link>
         <div className="goal__coins">
           <img
             className="message__offer-img"
