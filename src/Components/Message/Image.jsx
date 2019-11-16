@@ -24,19 +24,18 @@ const Message = (props: Props) => {
         )}
       </div>
       <div className="message__content">
-        <p>
-          {props.message}
-          {props.sentiment && (
-            <span
-              className={cn(
-                'message__sentiment',
-                'message__sentiment--' + props.sentiment.toLowerCase()
-              )}
-            >
-              <Icon icon={'mdi/face-' + props.sentiment.toLowerCase()} />
-            </span>
-          )}
-        </p>
+        <figure className="message__image-figure">
+          <img
+            className="message__image-img"
+            src="/static/img/stream/feed-photo@2x.png"
+            alt="Selfie"
+          />
+          <div className="message__image-cta">
+            <Icon icon="mdi/share" />
+            <span className="message__image-cta-text">auf Fan-Wall posten</span>
+          </div>
+        </figure>
+        <p>{props.message}</p>
       </div>
       <div className="message__footer">
         <span className="message__sender">{props.name}</span>

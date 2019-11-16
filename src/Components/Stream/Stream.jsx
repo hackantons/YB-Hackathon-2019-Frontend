@@ -12,6 +12,7 @@ import PollLike from '../Message/PollLike.jsx';
 import MatchNote from '../Message/MatchNote.jsx';
 import Offer from '../Message/Offer.jsx';
 import Goal from '../Message/Goal.jsx';
+import Image from '../Message/Image.jsx';
 
 import { spielminuten } from '@vendor/helpers';
 
@@ -182,6 +183,9 @@ const Stream = (props: Props) => {
                 case 'goal':
                   return <Goal {...message} key={i} />;
                   break;
+                case 'image':
+                  return <Image {...message} key={i} />;
+                  break;
               }
             })}
           <div className="stream__message-stream-matchtime">
@@ -244,6 +248,9 @@ const mapStateToProps = state => {
     started: state.gameStarted,
   };
 };
-export default connect(mapStateToProps, {
-  addMessages,
-})(Stream);
+export default connect(
+  mapStateToProps,
+  {
+    addMessages,
+  }
+)(Stream);

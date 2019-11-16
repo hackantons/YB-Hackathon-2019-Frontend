@@ -15,14 +15,19 @@
   }
 
   &__sentiment {
-    margin-right: var(--space-gutter-half);
+    margin-left: var(--space-gutter-half);
+    font-size: var(--fs-h6);
+    top: -0.1rem;
+    position: relative;
 
     &--positive {
-      color: var(--c-green);
+      //color: var(--c-green);
+      color: var(--c-gray);
     }
 
     &--negative {
-      color: var(--c-red);
+      //color: var(--c-red);
+      color: var(--c-gray);
     }
 
     &--neutral {
@@ -286,6 +291,31 @@
       text-transform: uppercase;
       font-weight: 700;
       font-size: var(--fs-h6);
+    }
+  }
+
+  &--image {
+    background-color: var(--c-bkg-dark);
+
+    .message__image-figure {
+      display: flex;
+      justify-content: center;
+      background-color: var(--c-gray);
+      margin-top: var(--space-gutter-half);
+    }
+
+    .message__image-img {
+      flex: 0 0 60%;
+      max-width: 60%;
+    }
+
+    .message__image-cta {
+      flex: 0 0 40%;
+      max-width: 40%;
+    }
+
+    .message__image-cta-text {
+      font-size: var(--fs-h3);
     }
   }
 }
