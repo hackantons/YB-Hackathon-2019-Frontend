@@ -182,13 +182,7 @@ const Stream = (props: Props) => {
                   );
                   break;
                 case 'matchnote':
-                  return (
-                    <MatchNote
-                      type={message.type}
-                      data={message.data}
-                      key={i}
-                    />
-                  );
+                  return <MatchNote {...message} key={i} />;
                   break;
                 case 'offer':
                   return (
@@ -262,9 +256,6 @@ const mapStateToProps = state => {
     started: state.gameStarted,
   };
 };
-export default connect(
-  mapStateToProps,
-  {
-    addMessages,
-  }
-)(Stream);
+export default connect(mapStateToProps, {
+  addMessages,
+})(Stream);

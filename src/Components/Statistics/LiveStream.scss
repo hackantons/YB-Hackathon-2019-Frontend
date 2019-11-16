@@ -1,9 +1,25 @@
 .livestream {
   &__subtitle {
     color: var(--c-yellow);
+    text-align: center;
+    margin-top: var(--space-gutter-half);
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  .icon {
+    font-size: var(--fs-h2);
+  }
+
+  .livestreams-stream {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-gutter);
   }
 }
 
 .section--livestream {
-  margin-top: -2rem !important;
+  margin-top: -3.5rem !important;
 }
