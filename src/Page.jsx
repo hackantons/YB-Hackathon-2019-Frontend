@@ -32,9 +32,7 @@ const App = props => {
           }
           if (dataObject !== false) {
             if (dataObject.time === 0) {
-              console.log(dataObject.time);
               dataObject.time = new Date().getTime();
-              console.log(dataObject.time);
             }
             props.addMessage(dataObject);
           }
