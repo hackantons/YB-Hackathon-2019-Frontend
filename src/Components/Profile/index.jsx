@@ -19,8 +19,17 @@ export default (
       <div className="section section--bkg-yellow section--oblique-right">
         <Coins className="profile-data__coins" />
       </div>
-      <h2>Die besten Deals.</h2>
-      <h3>Von deinen YB Partnern</h3>
+      <div className="section profile-data__partner-section">
+        <h1>Die besten Deals.</h1>
+        <h2>Von deinen YB Partnern</h2>
+        <div className="profile-data__partner-desc">
+          <h2>Überraschung</h2>
+          <p>
+            Irgendwann während dem Spiel gibt es für 10 Minuten ein limitiertes
+            Angebot. Sei bereit
+          </p>
+        </div>
+      </div>
       <Partner className="profile-data__partner" />
     </div>
   );

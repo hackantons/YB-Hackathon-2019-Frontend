@@ -5,6 +5,8 @@ import cn from 'classnames';
 import type { User } from '@vendor/types';
 import { connect } from 'react-redux';
 
+import './ProfileData.scss';
+
 import {
   Button,
   Form,

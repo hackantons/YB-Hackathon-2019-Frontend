@@ -7,16 +7,16 @@ import './Partner.scss';
 export default ({ className }: { className: string } = '') => {
   const [partner] = React.useState([
     {
-      title: 'YBPizza',
+      title: '5 CHF Rabatt bei Lieferungen in bern',
       description:
-        'Dieci bietet für die gesammte Spieldauer die YB Pizza an. Hammer Pizza, hammer Preis!',
+        'Du kannst heute nicht im Stadion sein? Dieci liefert dir feinste Pizzas für deinen TV Abend.',
       logo: 'dieci.png',
       link: 'https://www.dieci.ch/de/',
     },
     {
-      title: 'YBPizza',
+      title: '5 CHF Rabatt bei Lieferungen in bern',
       description:
-        'Dieci bietet für die gesammte Spieldauer die YB Pizza an. Hammer Pizza, hammer Preis!',
+        'Du kannst heute nicht im Stadion sein? Dieci liefert dir feinste Pizzas für deinen TV Abend.',
       logo: 'dieci.png',
       link: 'https://www.dieci.ch/de/',
     },
@@ -27,12 +27,12 @@ export default ({ className }: { className: string } = '') => {
       {partner.map((p, key) => {
         return (
           <div key={key} className="partner__element">
-            <h3 className="partner__title">{p.title}</h3>
             <img
               src={`/static/img/partner/${p.logo}`}
               className="partner__logo"
               alt={p.title}
             />
+            <h3 className="partner__title">{p.title}</h3>
             <p className="partner__description">{p.description}</p>
             <p className="partner__link">
               <a href={p.link}>Vom Angebot profitieren</a>

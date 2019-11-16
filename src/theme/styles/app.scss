@@ -6,9 +6,13 @@
 }
 
 @import 'tools/keyframes.spinner';
+@import 'tools/mixins.responsive';
 @import '_reset';
 @import '_color';
 @import '_section';
 @import '_typography';
 @import '_grid';
 @import '_document';
+@include mobile {
+  grid-template-columns: 1fr;
+}

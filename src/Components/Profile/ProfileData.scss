@@ -1,0 +1,15 @@
+.profile-data {
+  &__partner-section {
+    margin-top: calc(var(--space-section) * 2);
+  }
+
+  &__partner-desc {
+    margin: calc(var(--space-section) * 2) auto;
+    max-width: 500px;
+    text-align: center;
+
+    p {
+      margin-top: 1rem;
+    }
+  }
+}
