@@ -6,4 +6,26 @@
   & > * + h2 {
     margin-top: var(--space-groups);
   }
+
+  &__navigation {
+    display: block;
+    text-align: center;
+    padding: var(--space-gutter-half);
+
+    & > * + * {
+      margin-left: var(--space-groups);
+    }
+  }
+
+  &__navigation-element {
+    display: inline-block;
+    color: var(--c-p);
+    text-decoration: none;
+    padding: 1em 0;
+    text-transform: uppercase;
+
+    &--active {
+      color: var(--c-yellow);
+    }
+  }
 }
