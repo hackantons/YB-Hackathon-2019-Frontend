@@ -136,6 +136,7 @@ const Stream = (props: Props) => {
   const [error: string, setError] = React.useState('');
   const stream = React.useRef();
 
+  /*
   socket.onmessage = function(event) {
     props.addMessages(event.data.split('\n').map(data => JSON.parse(data)));
     stream.current.scrollTop = stream.current.scrollHeight;
@@ -145,6 +146,7 @@ const Stream = (props: Props) => {
     console.log('stream updated');
     console.log(stream.current.scrollTop, stream.current.scrollHeight);
   };
+   */
 
   const [timeNow: Number, setTimeNow] = React.useState(new Date().getTime());
 

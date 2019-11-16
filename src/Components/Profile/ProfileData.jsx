@@ -58,7 +58,7 @@ export const ProfileData = ({ className, user, updateUserName }) => {
         {error !== '' && <FormError>{error}</FormError>}
         {success !== '' && <FormSuccess>{success}</FormSuccess>}
         <Button
-          text="Primary"
+          text="Speichern"
           type="submit"
           loading={formProcessing}
           style="primary"

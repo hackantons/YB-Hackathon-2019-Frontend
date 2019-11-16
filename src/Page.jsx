@@ -11,7 +11,7 @@ import Profile from './Components/Profile/index.jsx';
 
 import { connect } from 'react-redux';
 import Statistics from './Components/Statistics/Statistics.jsx';
-import { addMessages, updateWs } from '@redux/actions';
+import { addMessage, updateWs } from '@redux/actions';
 
 window.socket = new WebSocket('wss://stream.bscyb.dev/stream');
 
@@ -23,7 +23,28 @@ const App = props => {
     if (!messagesWS) {
       setMessagesWS(socket);
       socket.onmessage = function(event) {
-        props.addMessages(event.data.split('\n').map(data => JSON.parse(data)));
+        event.data.split('\n').forEach(data => {
+          let dataObject = false;
+          try {
+            dataObject = JSON.parse(data);
+          } catch (error) {}
+          if (dataObject !== false) {
+            props.addMessage(dataObject);
+          }
+        });
+        /*
+        props.addMessages(
+          event.data.split('\n').map(data => {
+            let dataObject = false;
+            try {
+              dataObject = JSON.parse(data);
+            } catch (error) {}
+            if (dataObject !== false) {
+              return dataObject;
+            }
+          })
+        );
+         */
       };
     }
   });
@@ -79,6 +100,6 @@ export default connect(
     };
   },
   {
-    addMessages,
+    addMessage,
   }
 )(App);

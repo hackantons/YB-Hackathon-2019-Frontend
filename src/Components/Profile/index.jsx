@@ -24,12 +24,15 @@ export default (
       <div className="section section--bkg-yellow section--oblique-right">
         <Coins className="profile-data__coins" />
       </div>
-      <Button
-        text="Buy Beer"
-        icon="mdi/beer"
-        style="primary"
-        onClick={() => setBuyBeer(true)}
-      />
+      <div className="profile-data__buybeerbutton">
+        <Button
+          text="Buy Beer"
+          icon="mdi/beer"
+          style="primary"
+          onClick={() => setBuyBeer(true)}
+          large
+        />
+      </div>
       {buyBeer && <BuyBeer close={() => setBuyBeer(false)} />}
       <div className="section profile-data__partner-section">
         <h1>Die besten Deals.</h1>
@@ -42,7 +45,7 @@ export default (
           </p>
         </div>
       </div>
-      <Partner className="profile-data__partner" />
+      <Partner className="section section--leaderboard section--bkg-dark section--oblique-right profile-data__partner" />
     </div>
   );
 };
