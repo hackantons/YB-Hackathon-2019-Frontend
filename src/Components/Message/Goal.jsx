@@ -2,6 +2,9 @@
 import React from 'react';
 import cn from 'classnames';
 
+import { spielminuten } from '@vendor/helpers';
+import { connect } from 'react-redux';
+
 import './Message.scss';
 
 type Props = {
@@ -9,16 +12,14 @@ type Props = {
   data: Object,
 };
 
-export default (props: Props) => {
+const Goal = (props: Props) => {
   return (
-    <div
-      className={
-        'message message--' + props.type + ' message--' + props.data.origin
-      }
-    >
+    <div className={cn('message', 'message--' + props.type)}>
       <div className="message__header">
-        {props.data.time && (
-          <span className="message__time">{props.data.time}</span>
+        {props.time && (
+          <span className="message__time">
+            {spielminuten(props.started, props.time)}
+          </span>
         )}
       </div>
       <div className="message__content">
@@ -51,3 +52,10 @@ export default (props: Props) => {
     </div>
   );
 };
+
+export default connect(state => {
+  return {
+    user: state.user,
+    started: state.gameStarted,
+  };
+})(Goal);

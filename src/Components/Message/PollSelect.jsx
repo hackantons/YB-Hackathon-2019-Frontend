@@ -2,6 +2,9 @@
 import React from 'react';
 import cn from 'classnames';
 
+import { spielminuten } from '@vendor/helpers';
+import { connect } from 'react-redux';
+
 import {
   Button,
   Icon,
@@ -16,23 +19,19 @@ type Props = {
   data: Object,
 };
 
-export default (props: Props) => {
+const PollSelect = (props: Props) => {
   const [formProcessing: boolean, setFormProcessing] = React.useState(false);
   const [error: string, setError] = React.useState('');
 
   return (
-    <div
-      className={
-        'message message--' + props.type + ' message--' + props.data.origin
-      }
-    >
+    <div className={cn('message', 'message--' + props.type)}>
       <div className="message__header">
         <span className="message__time">
           <Icon icon="mdi/help" />
         </span>
       </div>
       <div className="message__content">
-        <p>{props.data.text}</p>
+        <p>{props.label}</p>
         <Form>
           <InputSelect
             name="select"
@@ -58,3 +57,10 @@ export default (props: Props) => {
     </div>
   );
 };
+
+export default connect(state => {
+  return {
+    user: state.user,
+    started: state.gameStarted,
+  };
+})(PollSelect);

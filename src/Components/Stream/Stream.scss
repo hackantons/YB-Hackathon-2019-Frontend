@@ -1,5 +1,5 @@
 :root {
-  --stream-indent: 4rem;
+  --stream-indent: 4.5rem;
 }
 
 .stream {
@@ -18,6 +18,7 @@
     position: relative;
     scroll-behavior: smooth;
     flex-grow: 1;
+    margin-top: -5rem;
 
     & > * + * {
       margin-top: var(--space-gutter);
@@ -69,7 +70,12 @@
   }
 
   &__form {
+    background-color: var(--c-yellow);
     padding: var(--space-gutter) var(--space-gutter) 0;
+
+    .button {
+      background-color: var(--c-yellow-hover);
+    }
 
     .form {
       display: flex;
@@ -89,6 +95,13 @@
 
     .form__textarea {
       height: 4rem;
+      background-color: var(--c-yellow-hover);
+      border: 1px solid #e4951e;
+      color: var(--c-black);
+
+      &::placeholder {
+        color: var(--c-black-light);
+      }
     }
 
     .form__controls {
@@ -110,6 +123,7 @@
         left: 50%;
         transform: translateX(-50%);
         position: relative;
+        color: var(--c-black-light);
       }
     }
   }

@@ -177,22 +177,16 @@ const Stream = (props: Props) => {
                   );
                   break;
                 case 'poll-like':
-                  return (
-                    <PollLike type={message.type} data={message.data} key={i} />
-                  );
+                  return <PollLike {...message} key={i} />;
                   break;
                 case 'matchnote':
                   return <MatchNote {...message} key={i} />;
                   break;
                 case 'offer':
-                  return (
-                    <Offer type={message.type} data={message.data} key={i} />
-                  );
+                  return <Offer {...message} key={i} />;
                   break;
                 case 'goal':
-                  return (
-                    <Goal type={message.type} data={message.data} key={i} />
-                  );
+                  return <Goal {...message} key={i} />;
                   break;
               }
             })}
@@ -240,7 +234,7 @@ const Stream = (props: Props) => {
               icon="mdi/send"
               type="submit"
               loading={formProcessing}
-              style="primary"
+              style="secondary"
             />
           </FormControls>
         </Form>
