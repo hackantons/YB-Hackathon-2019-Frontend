@@ -11,34 +11,27 @@ import {
   FormFieldset,
   FormControls,
   FormError,
+  FormSuccess,
   InputText,
-  InputTextarea,
-  InputSelect,
-  InputRadio,
-  InputCheckboxGroup,
-  Loader,
 } from '@theme';
 import { idb, uuidv4 } from '@/store/idb';
-import { updateUserGroup, updateUserId } from '@redux/actions';
+import { updateUserName, updateUserId } from '@redux/actions';
 
-export const ProfileData = ({ className, user }) => {
+export const ProfileData = ({ className, user, updateUserName }) => {
   const [formProcessing: boolean, setFormProcessing] = React.useState(false);
   const [error: string, setError] = React.useState('');
+  const [success: string, setSuccess] = React.useState('');
 
   return (
     <Form
       onSubmit={data => {
-        if (error === '') {
-          setError('This is an Error. Please submit again');
-        } else {
-          setError('');
-          setFormProcessing(true);
+        updateUserName(data.name);
+        idb.set('userName', data.name).then(() => {
+          setSuccess('Success!');
           window.setTimeout(() => {
-            setFormProcessing(false);
-            alert('form submitted! Please visit the console for the output');
-            console.log(data);
-          }, 3000);
-        }
+            setSuccess('');
+          }, 1000);
+        });
       }}
       className={cn(className)}
     >
@@ -47,18 +40,21 @@ export const ProfileData = ({ className, user }) => {
           name="user"
           label="User"
           register={{ required: 'This field is required' }}
-          defaultValue={user.id}
-          disabled
+          value={user.id}
+          disabled={true}
+          large
         />
         <InputText
           name="name"
           label="Name"
           register={{ required: 'This field is required' }}
-          defaultValue={user.name}
+          value={user.name}
+          large
         />
       </FormFieldset>
       <FormControls>
         {error !== '' && <FormError>{error}</FormError>}
+        {success !== '' && <FormSuccess>{success}</FormSuccess>}
         <Button
           text="Primary"
           type="submit"
@@ -71,6 +67,10 @@ export const ProfileData = ({ className, user }) => {
 };
 
 const mapStateToProps = state => {
-  return state;
+  return { user: state.user };
 };
-export default connect(mapStateToProps)(ProfileData);
+
+export default connect(
+  mapStateToProps,
+  { updateUserName, updateUserId }
+)(ProfileData);

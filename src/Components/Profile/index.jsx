@@ -19,7 +19,8 @@ export default (
       <div className="section section--bkg-yellow section--oblique-right">
         <Coins className="profile-data__coins" />
       </div>
-      <h2>Partner</h2>
+      <h2>Die besten Deals.</h2>
+      <h3>Von deinen YB Partnern</h3>
       <Partner className="profile-data__partner" />
     </div>
   );

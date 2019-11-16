@@ -10,7 +10,14 @@ export default ({ className }: { className: string } = '') => {
       title: 'YBPizza',
       description:
         'Dieci bietet für die gesammte Spieldauer die YB Pizza an. Hammer Pizza, hammer Preis!',
-      logo: 'dieci.jpg',
+      logo: 'dieci.png',
+      link: 'https://www.dieci.ch/de/',
+    },
+    {
+      title: 'YBPizza',
+      description:
+        'Dieci bietet für die gesammte Spieldauer die YB Pizza an. Hammer Pizza, hammer Preis!',
+      logo: 'dieci.png',
       link: 'https://www.dieci.ch/de/',
     },
   ]);

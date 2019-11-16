@@ -16,6 +16,7 @@ type Props = {
   className?: string,
   classNameLabel?: string,
   classNameInput?: string,
+  onKeyPress?: Function,
 };
 
 const Textarea = (props: Props) => {
@@ -49,6 +50,7 @@ const Textarea = (props: Props) => {
             defaultValue={props.value}
             placeholder={props.placeholder}
             rows={props.rows}
+            onKeyPress={e => props.onKeyPress(e)}
           />
           {errors[name] && (
             <span className={cn('form__error')}>{errors[name].message}</span>
