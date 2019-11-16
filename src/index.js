@@ -23,7 +23,7 @@ if (isDev) {
  */
 
 window.serviceWorkerEvent = false;
-if ('serviceWorker' in navigator && !isDev) {
+if ('serviceWorker' in navigator) {
   //if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register('/service-worker.js')

@@ -31,9 +31,6 @@ const App = props => {
             console.log('error', data);
           }
           if (dataObject !== false) {
-            if (dataObject.time === 0) {
-              dataObject.time = new Date().getTime();
-            }
             props.addMessage(dataObject);
           }
         });
